@@ -7,5 +7,5 @@ http.createServer(function(req, res){
 	var qobj = url.parse(req.url, true).query;
 	var f_name = qobj.f_name;
 	var l_name = qobj.l_name;
-	res.end(f_name + l_name);
+	res.end(f_name + " " + l_name);
 }).listen(8080);
