@@ -14,6 +14,24 @@ html, body
 	margin: 30px;
 }
 
+table 
+{
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+}
+
+td, th 
+{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) 
+{
+	background-color: #eeeeee;
+}
+
 #container 
 {
 	width: 50%;
@@ -27,73 +45,224 @@ html, body
 	<title>API Test</title>
 	<meta charset="utf-8"/>
 	<script>
-		// array = [];
 
 		function getData() 
 		{
  			request = new XMLHttpRequest();
-			request.open("GET", "https://covidtracking.com/api/states");
+			request.open("GET", "https://covidtracking.com/api/states/daily");
 			request.onreadystatechange = function() 
 			{
 				if (request.readyState == 4 && request.status == 200) 
 				{
 					result = request.responseText;
-					// alert(result);
 					data = JSON.parse(result);
-					for (i = 0; i < data.length; i++)
-						// array[data[i]["state"]] = data[i]
-						document.getElementById("data").innerHTML += (data[i]["state"] + ": " + data[i]["positive"] + " positive cases.</br>");
+
+					text = "<table id='table'><tr><th></th><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
+
+					for (i = 0; i < 56; i++) 
+					{
+						if (data[i]["state"] !== "AS") {
+							text += "<tr><td><input onchange='update_chart()' type='checkbox' name='row' />&nbsp;</td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
+						}
+
+					}
+
+					text += "</table>";
+
+					document.getElementById("data").innerHTML = text;
 
 				}
 			}
 
 			request.send();
+
+			// empty chart
+			anychart.onDocumentReady(function() 
+	        {
+			    // set the data
+			    var data = {
+			    	header: ["Name", "Death toll"],
+			      	rows: []
+		           };
+
+				// create the chart
+				var chart = anychart.column();
+				chart.normal().fill("#425957");
+				
+				// add data
+				chart.data(data);
+
+				// set the chart title
+				chart.title("Total Positive Cases in Selected States");
+
+				// draw
+				chart.container("container");
+				chart.draw();
+			});
 		}
+		
+		function sortBy(obj)
+		{
+			// alert(document.getElementById("container").innerHTML);
+
+			var table, rows, switching, i, x, y, shouldSwitch;
+			table = document.getElementById("table");
+			switching = true;
+
+			/*Make a loop that will continue until
+			no switching has been done:*/
+			while (switching) 
+			{
+				//start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/*Loop through all table rows (except the
+				first, which contains table headers):*/
+				for (i = 1; i < (rows.length - 1); i++) 
+				{
+					//start by saying there should be no switching:
+					shouldSwitch = false;
+					/*Get the two elements you want to compare,
+					one from current row and one from the next:*/
+					x = rows[i].getElementsByTagName("TD")[obj.selectedIndex+1].innerHTML;
+					y = rows[i + 1].getElementsByTagName("TD")[obj.selectedIndex+1].innerHTML;
+					
+					if (obj.selectedIndex != 0)
+					{
+						x = parseInt(x);
+						y = parseInt(y);
+						comparison = x < y
+					}
+					else 
+					{
+						comparison = x > y
+					}
+
+					//check if the two rows should switch place:
+					if (comparison)
+					{
+						//if so, mark as a switch and break the loop:
+						shouldSwitch = true;
+						break;
+					}
+					
+				}
+				if (shouldSwitch) 
+				{
+					/*If a switch has been marked, make the switch
+					and mark that a switch has been done:*/
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+				}
+			}
+
+			/* Shiv's old sorting code
+			data = document.getElementById("data").innerHTML;
+			state = data.split("<br>");
+			//alert(state[0]);
+			//values = state[0].match(/\d+/g);
+			//alert(values);
+			arr = [];
+			for (i = 0; i < 55; i++) {
+				values = state[i].match(/\d+/g);
+				values.push(state[i]);
+				values.push(i);
+				arr.push(values);
+			}
+			//console.log(arr);
+
+			if (document.getElementById("sort").value == "Total Positive Cases") {
+				for(i = 0; i < 55; i++){
+       				 for(j = i+1; j < 55; j++){
+            			if(arr[i][0] > arr[j][0]){
+                			temp = arr[i];
+                			arr[i] = arr[j];
+                			arr[j] = temp;
+            			}
+        			}
+    			}
+    			console.log(arr);
+    			document.getElementById("data").innerHTML = null;
+    			for (i = 0; i < 55; i++){
+    				document.getElementById("data").innerHTML += arr[i][4] + "<br>";
+    			}
+			}
+			*/	 
+		}
+	
+
 	</script>
 </head>
 <body onload="getData()">
 	<h1>API Test</h1>
-	<div id="data"></div>
 
-	<iframe src="https://createaclickablemap.com/map.php?&id=90766&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
-	
 	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 	<div id="container"></div>
 
+	<h3 style="margin-bottom: 5px">Sort by: </h3>
+	<form style="margin-bottom:20px">
+		<select id="sort" onchange="sortBy(this)">
+			<option>None</option>
+			<option>Total Positive Cases</option>
+			<option>Daily Positive Case Increase</option>
+			<option>Total Deaths</option>
+			<option>Daily Death Increase</option>
+		</select>
+	</form>
+
+	<div id="blah"></div>
+
+	<div id="data"></div>
+
+	<!-- map display
+	<iframe src="https://createaclickablemap.com/map.php?&id=90766&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe> -->
+
 	<script>
-        anychart.onDocumentReady(function() 
-        {
-		    // set the data
-		    var data = {
-		    	header: ["Name", "Death toll"],
-		      	rows: 
-		      		[["San-Francisco (1906)", 1500],
-			         ["Messina (1908)", 87000],
-			         ["Ashgabat (1948)", 175000],
-			         ["Chile (1960)", 10000],
-			         ["Tian Shan (1976)", 242000],
-			         ["Armenia (1988)", 25000],
-			         ["Iran (1990)", 50000]]
-	           };
+		function update_chart()
+		{
+			arr = [];
+			document.getElementById("container").innerHTML = "";
+			table = document.getElementById("table");
+			rows = table.rows;
+			for (i = 1; i < rows.length; i++) 
+			{
+				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
+				{
+					// gets total positive cases only
+					state_name = rows[i].getElementsByTagName("TD")[1].innerHTML;
+					stat = parseInt(rows[i].getElementsByTagName("TD")[2].innerHTML);
+					arr.push ([state_name, stat]);
+				}
+			}
 
-			// create the chart
-			var chart = anychart.column();
-			chart.normal().fill("#425957");
-			
-			// add data
-			chart.data(data);
+	        anychart.onDocumentReady(function() 
+	        {
+			    // set the data
+			    var data = {
+			    	header: ["Name", "Death toll"],
+			      	rows: arr
+		           };
 
-			// set the chart title
-			chart.title("The deadliest earthquakes in the XXth century");
+				// create the chart
+				var chart = anychart.column();
+				chart.normal().fill("#425957");
+				
+				// add data
+				chart.data(data);
 
-			// draw
-			chart.container("container");
-			chart.draw();
-		});
+				// set the chart title
+				chart.title("Total Positive Cases in Selected States");
+
+				// draw
+				chart.container("container");
+				chart.draw();
+			});
+	    }
     </script>
 
 
-	<script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script>
+	<!-- map script
+	 <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script> -->
 
 
 
