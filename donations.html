@@ -22,16 +22,31 @@
 				{
 					alert("Last Name is required");
 					return false;
-				}		
+				}
+				if (masks.value == "")
+				{
+					alert("Number of Masks is required");
+					return false;
+				}
+				if (state.value == "")
+				{
+					alert("State is required");
+					return false;
+				}	
+				if (zip.value == "")
+				{
+					alert("Zip Code is required");
+					return false;
+				}				
 			}		
 		}
 	</script>
 	<h2> Mask Donation Form </h2>
-	<form method="get" action="http://localhost:8080" onsubmit="return validate()">
+	<form method="get" action="http://localhost:8080" onsubmit="return validate()" target="_blank">
 		First Name: <input type="text" name="f_name">
 		Last Name:  <input type="text" name="l_name">
 		<br/> 
-		Number of Masks: <input type="text" name="masks">
+		Number of Masks: <input type="Number" name="masks">
 		<br/>
 		State: <input type="text" name="state">
 		<br/>
