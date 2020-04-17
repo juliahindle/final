@@ -1,4 +1,6 @@
 
+const MongoClient = require('mongodb').MongoClient;
+var adr = "mongodb+srv://webalub:<comp20tufts>@cluster0-jnsgs.mongodb.net/test?retryWrites=true&w=majority"
 var http = require('http');
 var url = require('url');
 
