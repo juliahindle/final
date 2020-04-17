@@ -75,6 +75,30 @@ tr:nth-child(even)
 			}
 
 			request.send();
+
+			// empty chart
+			anychart.onDocumentReady(function() 
+	        {
+			    // set the data
+			    var data = {
+			    	header: ["Name", "Death toll"],
+			      	rows: []
+		           };
+
+				// create the chart
+				var chart = anychart.column();
+				chart.normal().fill("#425957");
+				
+				// add data
+				chart.data(data);
+
+				// set the chart title
+				chart.title("Total Positive Cases in Selected States");
+
+				// draw
+				chart.container("container");
+				chart.draw();
+			});
 		}
 		
 		function sortBy(obj)
