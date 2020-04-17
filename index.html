@@ -62,7 +62,7 @@ tr:nth-child(even)
 					for (i = 0; i < 56; i++) 
 					{
 						if (data[i]["state"] !== "AS") {
-							text += "<tr><td><input type='checkbox' name='row' />&nbsp;</td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
+							text += "<tr><td><input onchange='update_chart()' type='checkbox' name='row' />&nbsp;</td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
 						}
 
 					}
@@ -79,6 +79,8 @@ tr:nth-child(even)
 		
 		function sortBy(obj)
 		{
+			// alert(document.getElementById("container").innerHTML);
+
 			var table, rows, switching, i, x, y, shouldSwitch;
 			table = document.getElementById("table");
 			switching = true;
@@ -169,6 +171,10 @@ tr:nth-child(even)
 </head>
 <body onload="getData()">
 	<h1>API Test</h1>
+
+	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+	<div id="container"></div>
+
 	<h3 style="margin-bottom: 5px">Sort by: </h3>
 	<form style="margin-bottom:20px">
 		<select id="sort" onchange="sortBy(this)">
@@ -180,45 +186,54 @@ tr:nth-child(even)
 		</select>
 	</form>
 
+	<div id="blah"></div>
 
 	<div id="data"></div>
 
 	<!-- map display
 	<iframe src="https://createaclickablemap.com/map.php?&id=90766&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe> -->
-	
-	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<div id="container"></div>
 
 	<script>
-        anychart.onDocumentReady(function() 
-        {
-		    // set the data
-		    var data = {
-		    	header: ["Name", "Death toll"],
-		      	rows: []
-		      		// [["San-Francisco (1906)", 1500],
-			       //   ["Messina (1908)", 87000],
-			       //   ["Ashgabat (1948)", 175000],
-			       //   ["Chile (1960)", 10000],
-			       //   ["Tian Shan (1976)", 242000],
-			       //   ["Armenia (1988)", 25000],
-			       //   ["Iran (1990)", 50000]]
-	           };
+		function update_chart()
+		{
+			arr = [];
+			document.getElementById("container").innerHTML = "";
+			table = document.getElementById("table");
+			rows = table.rows;
+			for (i = 1; i < rows.length; i++) 
+			{
+				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
+				{
+					// gets total positive cases only
+					state_name = rows[i].getElementsByTagName("TD")[1].innerHTML;
+					stat = parseInt(rows[i].getElementsByTagName("TD")[2].innerHTML);
+					arr.push ([state_name, stat]);
+				}
+			}
 
-			// create the chart
-			var chart = anychart.column();
-			chart.normal().fill("#425957");
-			
-			// add data
-			chart.data(data);
+	        anychart.onDocumentReady(function() 
+	        {
+			    // set the data
+			    var data = {
+			    	header: ["Name", "Death toll"],
+			      	rows: arr
+		           };
 
-			// set the chart title
-			chart.title("Positive Cases in Selected States");
+				// create the chart
+				var chart = anychart.column();
+				chart.normal().fill("#425957");
+				
+				// add data
+				chart.data(data);
 
-			// draw
-			chart.container("container");
-			chart.draw();
-		});
+				// set the chart title
+				chart.title("Total Positive Cases in Selected States");
+
+				// draw
+				chart.container("container");
+				chart.draw();
+			});
+	    }
     </script>
 
 
