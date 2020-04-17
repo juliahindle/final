@@ -28,11 +28,10 @@ html, body
 	<meta charset="utf-8"/>
 	<script>
 		// array = [];
-
 		function getData() 
 		{
  			request = new XMLHttpRequest();
-			request.open("GET", "https://covidtracking.com/api/states");
+			request.open("GET", "https://covidtracking.com/api/states/daily");
 			request.onreadystatechange = function() 
 			{
 				if (request.readyState == 4 && request.status == 200) 
@@ -40,19 +39,70 @@ html, body
 					result = request.responseText;
 					// alert(result);
 					data = JSON.parse(result);
-					for (i = 0; i < data.length; i++)
+					for (i = 0; i < 56; i++) {
 						// array[data[i]["state"]] = data[i]
-						document.getElementById("data").innerHTML += (data[i]["state"] + ": " + data[i]["positive"] + " positive cases.</br>");
+						if (data[i]["state"] !== "AS") {
+							document.getElementById("data").innerHTML += (data[i]["state"] + ": " + data[i]["positive"] + " positive cases, " + data[i]["positiveIncrease"] + " more positive cases since yesterday, " + data[i]["death"] + " total deaths, " + data[i]["deathIncrease"] + " more deaths since yesterday </br>");
+						}
+					}
 
 				}
 			}
 
 			request.send();
 		}
+		
+		function sortBy()
+		{
+			data = document.getElementById("data").innerHTML;
+			state = data.split("<br>");
+			//alert(state[0]);
+			//values = state[0].match(/\d+/g);
+			//alert(values);
+			arr = [];
+			for (i = 0; i < 55; i++) {
+				values = state[i].match(/\d+/g);
+				values.push(state[i]);
+				values.push(i);
+				arr.push(values);
+			}
+			//console.log(arr);
+
+			if (document.getElementById("sort").value == "Total Positive Cases") {
+				for(i = 0; i < 55; i++){
+       				 for(j = i+1; j < 55; j++){
+            			if(arr[i][0] > arr[j][0]){
+                			temp = arr[i];
+                			arr[i] = arr[j];
+                			arr[j] = temp;
+            			}
+        			}
+    			}
+    			console.log(arr);
+    			document.getElementById("data").innerHTML = null;
+    			for (i = 0; i < 55; i++){
+    				document.getElementById("data").innerHTML += arr[i][4] + "<br>";
+    			}
+			}
+				 
+		}
+	
+
 	</script>
 </head>
 <body onload="getData()">
 	<h1>API Test</h1>
+	<form>
+		<select id="sort" onchange="sortBy()">
+			<option>Sort By</option>
+			<option>Total Positive Cases</option>
+			<option>Daily Positive Case Increase</option>
+			<option>Total Deaths</option>
+			<option>Daily Death Increase</option>
+		</select>
+	</form>
+
+
 	<div id="data"></div>
 
 	<iframe src="https://createaclickablemap.com/map.php?&id=90766&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe>
