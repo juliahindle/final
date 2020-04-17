@@ -14,6 +14,25 @@ html, body
 	margin: 30px;
 }
 
+table 
+{
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  /*width: 100%;*/
+}
+
+td, th 
+{
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+tr:nth-child(even) 
+{
+	background-color: #eeeeee;
+}
+
 #container 
 {
 	width: 50%;
@@ -27,7 +46,7 @@ html, body
 	<title>API Test</title>
 	<meta charset="utf-8"/>
 	<script>
-		// array = [];
+
 		function getData() 
 		{
  			request = new XMLHttpRequest();
@@ -39,12 +58,21 @@ html, body
 					result = request.responseText;
 					// alert(result);
 					data = JSON.parse(result);
-					for (i = 0; i < 56; i++) {
+
+					text = "<table id='table'><tr><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
+
+					for (i = 0; i < 56; i++) 
+					{
 						// array[data[i]["state"]] = data[i]
 						if (data[i]["state"] !== "AS") {
-							document.getElementById("data").innerHTML += (data[i]["state"] + ": " + data[i]["positive"] + " positive cases, " + data[i]["positiveIncrease"] + " more positive cases since yesterday, " + data[i]["death"] + " total deaths, " + data[i]["deathIncrease"] + " more deaths since yesterday </br>");
+							text += "<tr><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
 						}
+
 					}
+
+					text += "</table>";
+
+					document.getElementById("data").innerHTML = text;
 
 				}
 			}
@@ -52,38 +80,89 @@ html, body
 			request.send();
 		}
 		
-		function sortBy()
+		function sortBy(obj)
 		{
-			data = document.getElementById("data").innerHTML;
-			state = data.split("<br>");
-			//alert(state[0]);
-			//values = state[0].match(/\d+/g);
-			//alert(values);
-			arr = [];
-			for (i = 0; i < 55; i++) {
-				values = state[i].match(/\d+/g);
-				values.push(state[i]);
-				values.push(i);
-				arr.push(values);
-			}
-			//console.log(arr);
+			var table, rows, switching, i, x, y, shouldSwitch;
+			table = document.getElementById("table");
+			switching = true;
 
-			if (document.getElementById("sort").value == "Total Positive Cases") {
-				for(i = 0; i < 55; i++){
-       				 for(j = i+1; j < 55; j++){
-            			if(arr[i][0] > arr[j][0]){
-                			temp = arr[i];
-                			arr[i] = arr[j];
-                			arr[j] = temp;
-            			}
-        			}
-    			}
-    			console.log(arr);
-    			document.getElementById("data").innerHTML = null;
-    			for (i = 0; i < 55; i++){
-    				document.getElementById("data").innerHTML += arr[i][4] + "<br>";
-    			}
+			/*Make a loop that will continue until
+			no switching has been done:*/
+			while (switching) 
+			{
+				//start by saying: no switching is done:
+				switching = false;
+				rows = table.rows;
+				/*Loop through all table rows (except the
+				first, which contains table headers):*/
+				for (i = 1; i < (rows.length - 1); i++) 
+				{
+					//start by saying there should be no switching:
+					shouldSwitch = false;
+					/*Get the two elements you want to compare,
+					one from current row and one from the next:*/
+					x = rows[i].getElementsByTagName("TD")[obj.selectedIndex].innerHTML;
+					y = rows[i + 1].getElementsByTagName("TD")[obj.selectedIndex].innerHTML;
+					
+					if (obj.selectedIndex != 0)
+					{
+						x = parseInt(x);
+						y = parseInt(y);
+						comparison = x < y
+					}
+					else 
+					{
+						comparison = x > y
+					}
+
+					//check if the two rows should switch place:
+					if (comparison)
+					{
+						//if so, mark as a switch and break the loop:
+						shouldSwitch = true;
+						break;
+					}
+					
+				}
+				if (shouldSwitch) 
+				{
+					/*If a switch has been marked, make the switch
+					and mark that a switch has been done:*/
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+				}
 			}
+
+			// data = document.getElementById("data").innerHTML;
+			// state = data.split("<br>");
+			// //alert(state[0]);
+			// //values = state[0].match(/\d+/g);
+			// //alert(values);
+			// arr = [];
+			// for (i = 0; i < 55; i++) {
+			// 	values = state[i].match(/\d+/g);
+			// 	values.push(state[i]);
+			// 	values.push(i);
+			// 	arr.push(values);
+			// }
+			// //console.log(arr);
+
+			// if (document.getElementById("sort").value == "Total Positive Cases") {
+			// 	for(i = 0; i < 55; i++){
+   //     				 for(j = i+1; j < 55; j++){
+   //          			if(arr[i][0] > arr[j][0]){
+   //              			temp = arr[i];
+   //              			arr[i] = arr[j];
+   //              			arr[j] = temp;
+   //          			}
+   //      			}
+   //  			}
+   //  			console.log(arr);
+   //  			document.getElementById("data").innerHTML = null;
+   //  			for (i = 0; i < 55; i++){
+   //  				document.getElementById("data").innerHTML += arr[i][4] + "<br>";
+   //  			}
+			// }
 				 
 		}
 	
@@ -92,9 +171,10 @@ html, body
 </head>
 <body onload="getData()">
 	<h1>API Test</h1>
-	<form>
-		<select id="sort" onchange="sortBy()">
-			<option>Sort By</option>
+	<h3 style="margin-bottom: 5px">Sort by: </h3>
+	<form style="margin-bottom:20px">
+		<select id="sort" onchange="sortBy(this)">
+			<option>None</option>
 			<option>Total Positive Cases</option>
 			<option>Daily Positive Case Increase</option>
 			<option>Total Deaths</option>
