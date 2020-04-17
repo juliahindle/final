@@ -16,9 +16,8 @@ html, body
 
 table 
 {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  /*width: 100%;*/
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
 }
 
 td, th 
@@ -56,16 +55,14 @@ tr:nth-child(even)
 				if (request.readyState == 4 && request.status == 200) 
 				{
 					result = request.responseText;
-					// alert(result);
 					data = JSON.parse(result);
 
-					text = "<table id='table'><tr><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
+					text = "<table id='table'><tr><th></th><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
 
 					for (i = 0; i < 56; i++) 
 					{
-						// array[data[i]["state"]] = data[i]
 						if (data[i]["state"] !== "AS") {
-							text += "<tr><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
+							text += "<tr><td><input type='checkbox' name='row' />&nbsp;</td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
 						}
 
 					}
@@ -133,37 +130,38 @@ tr:nth-child(even)
 				}
 			}
 
-			// data = document.getElementById("data").innerHTML;
-			// state = data.split("<br>");
-			// //alert(state[0]);
-			// //values = state[0].match(/\d+/g);
-			// //alert(values);
-			// arr = [];
-			// for (i = 0; i < 55; i++) {
-			// 	values = state[i].match(/\d+/g);
-			// 	values.push(state[i]);
-			// 	values.push(i);
-			// 	arr.push(values);
-			// }
-			// //console.log(arr);
+			/* Shiv's old sorting code
+			data = document.getElementById("data").innerHTML;
+			state = data.split("<br>");
+			//alert(state[0]);
+			//values = state[0].match(/\d+/g);
+			//alert(values);
+			arr = [];
+			for (i = 0; i < 55; i++) {
+				values = state[i].match(/\d+/g);
+				values.push(state[i]);
+				values.push(i);
+				arr.push(values);
+			}
+			//console.log(arr);
 
-			// if (document.getElementById("sort").value == "Total Positive Cases") {
-			// 	for(i = 0; i < 55; i++){
-   //     				 for(j = i+1; j < 55; j++){
-   //          			if(arr[i][0] > arr[j][0]){
-   //              			temp = arr[i];
-   //              			arr[i] = arr[j];
-   //              			arr[j] = temp;
-   //          			}
-   //      			}
-   //  			}
-   //  			console.log(arr);
-   //  			document.getElementById("data").innerHTML = null;
-   //  			for (i = 0; i < 55; i++){
-   //  				document.getElementById("data").innerHTML += arr[i][4] + "<br>";
-   //  			}
-			// }
-				 
+			if (document.getElementById("sort").value == "Total Positive Cases") {
+				for(i = 0; i < 55; i++){
+       				 for(j = i+1; j < 55; j++){
+            			if(arr[i][0] > arr[j][0]){
+                			temp = arr[i];
+                			arr[i] = arr[j];
+                			arr[j] = temp;
+            			}
+        			}
+    			}
+    			console.log(arr);
+    			document.getElementById("data").innerHTML = null;
+    			for (i = 0; i < 55; i++){
+    				document.getElementById("data").innerHTML += arr[i][4] + "<br>";
+    			}
+			}
+			*/	 
 		}
 	
 
