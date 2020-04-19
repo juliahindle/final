@@ -5,13 +5,14 @@ const MongoClient = require('mongodb').MongoClient;
 var http = require('http');
 var url = require('url');
 
+
 async function main()
 {
 	http.createServer(function(req, res){
 		res.writeHead(200, {'Content-Type':'text/html'});
 		var qobj = url.parse(req.url, true).query;
-		f_name = qobj.f_name;
-		l_name = qobj.l_name;
+		var f_name = qobj.f_name;
+		var l_name = qobj.l_name;
 		add_to_db(f_name, l_name);
 
 	    res.end(f_name + " " + l_name);
