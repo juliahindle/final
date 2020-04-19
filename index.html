@@ -57,12 +57,12 @@ tr:nth-child(even)
 					result = request.responseText;
 					data = JSON.parse(result);
 
-					text = "<table id='table'><tr><th></th><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
+					text = "<table id='table'><tr><th><input onchange='update_all_checkboxes()' type='checkbox' name='row'/></th><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
 
 					for (i = 0; i < 56; i++) 
 					{
 						if (data[i]["state"] !== "AS") {
-							text += "<tr><td><input onchange='update_chart()' type='checkbox' name='row' />&nbsp;</td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
+							text += "<tr><td><input onchange='update_chart()' type='checkbox' name='row'/></td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
 						}
 
 					}
@@ -77,11 +77,10 @@ tr:nth-child(even)
 			request.send();
 
 			// empty chart
-			anychart.onDocumentReady(function() 
+			anychart.onDocumentReady(function()
 	        {
 			    // set the data
 			    var data = {
-			    	header: ["Name", "Death toll"],
 			      	rows: []
 		           };
 
@@ -99,6 +98,21 @@ tr:nth-child(even)
 				chart.container("container");
 				chart.draw();
 			});
+		}
+
+		function update_all_checkboxes()
+		{
+			table = document.getElementById("table");
+			rows = table.rows;
+
+			value = rows[0].getElementsByTagName("TH")[0].getElementsByTagName("input")[0].checked;
+			
+			for (i = 1; i < rows.length; i++) 
+			{
+				rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked = value;
+			}
+
+			update_chart();
 		}
 		
 		function sortBy(obj)
@@ -239,7 +253,7 @@ tr:nth-child(even)
 	        {
 			    // set the data
 			    var data = {
-			    	header: ["Name", "Death toll"],
+			    	// header: ["Name", "Death toll"],
 			      	rows: arr
 		           };
 
