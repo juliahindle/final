@@ -8,9 +8,16 @@
 </head>
 
 <body>
-	<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"language="javascript">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"language="javascript"></script>
+	<script type="text/javascript">
 		function validate()
 		{
+			f_name = document.forms[0].f_name.value;
+			l_name = document.forms[0].l_name.value;
+			masks = document.forms[0].masks.value;
+			state = document.forms[0].state.value;
+			zip = document.forms[0].zip.value;
+
 			with(document.forms[0])
 			{
 				if (f_name.value == "")
@@ -38,12 +45,16 @@
 					alert("Zip Code is required");
 					return false;
 				}				
-			}		
+			}
+			alert("Information successfully recorded. Thanks for donating!");
+			return true;
 		}
+
 	</script>
+
 	<div style="margin-left: 2%">
 	<h2> Mask Donation Form </h2>
-		<form class="block_form" method="get" action="http://localhost:8080" onsubmit="return validate()">
+		<form class="block_form" method="get" action="http://localhost:8080" target="formDestination">
 			First Name: <input type="text" name="f_name">
 			Last Name:  <input type="text" name="l_name">
 			<br/> <br/>
@@ -53,9 +64,12 @@
 			<br/><br/>
 			Zip Code: <input type="text" name="zip">
 			<br/><br/>
-			<input type="submit" value="Make Your Donation Available">
+			<input type="submit" value="Make Your Donation Available" onclick="return validate()">
+			<input type="reset" name="reset" value="Reset Form" onclick="Reset()"></button>
 		</form>
 	</div>
+
+	<iframe name="formDestination" style="display: none;"></iframe> <!-- cheeky trick to not reload the page -->
 </body>
 
 </html>
