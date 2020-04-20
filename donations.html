@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>Mask Donations</title>
-<style type="text/css">
-</style>
+	<meta charset="utf-8">
+	<title>Mask Donations</title>
+	<style type="text/css">
+	</style>
 </head>
 
 <body>
@@ -23,26 +23,31 @@
 				if (f_name.value == "")
 				{
 					alert("First Name is required");
+					document.forms[0].f_name.focus();
 					return false;
 				}
 				if (l_name.value == "")
 				{
 					alert("Last Name is required");
+					document.forms[0].l_name.focus();
 					return false;
 				}
 				if (masks.value == "")
 				{
 					alert("Number of Masks is required");
+					document.forms[0].masks.focus();
 					return false;
 				}
 				if (state.value == "")
 				{
 					alert("State is required");
+					document.forms[0].state.focus();
 					return false;
 				}	
 				if (zip.value == "")
 				{
 					alert("Zip Code is required");
+					document.forms[0].zip.focus();
 					return false;
 				}				
 			}
@@ -65,7 +70,7 @@
 			Zip Code: <input type="text" name="zip">
 			<br/><br/>
 			<input type="submit" value="Make Your Donation Available" onclick="return validate()">
-			<input type="reset" name="reset" value="Reset Form" onclick="Reset()"></button>
+			<input type="reset" name="reset" value="Reset Form"></button>
 		</form>
 	</div>
 
