@@ -4,7 +4,7 @@
 const MongoClient = require('mongodb').MongoClient;
 var http = require('http');
 var url = require('url');
-
+var port = process.env.PORT || 8080; // to enable access by heroku
 
 async function main()
 {
@@ -19,7 +19,7 @@ async function main()
 		add_to_db(f_name, l_name, mask_num, zip, state);
 
 	    res.end();
-	}).listen(8080);
+	}).listen(port);
 }
 main().catch(console.error);
 
