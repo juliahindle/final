@@ -18,7 +18,7 @@ async function main()
 		var state = qobj.state;
 		add_to_db(f_name, l_name, mask_num, zip, state);
 
-	    //res.end(f_name + " " + l_name);
+	    res.end();
 	}).listen(8080);
 }
 main().catch(console.error);
