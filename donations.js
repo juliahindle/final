@@ -13,14 +13,17 @@ async function main()
 		var qobj = url.parse(req.url, true).query;
 		var f_name = qobj.f_name;
 		var l_name = qobj.l_name;
-		add_to_db(f_name, l_name);
+		var mask_num = qobj.masks;
+		var zip = qobj.zip;
+		var state = qobj.state;
+		add_to_db(f_name, l_name, mask_num, zip, state);
 
-	    res.end(f_name + " " + l_name);
+	    //res.end(f_name + " " + l_name);
 	}).listen(8080);
 }
 main().catch(console.error);
 
-async function add_to_db(f_name,l_name){
+async function add_to_db(f_name,l_name, mask_num, zip, state){
 	if (f_name != null){
 		const uri = "mongodb+srv://webalub:comp20tufts@cluster0-jnsgs.mongodb.net/test?retryWrites=true&w=majority"
 
@@ -29,7 +32,8 @@ async function add_to_db(f_name,l_name){
 			var dbo = client.db("masks");
 			var collection = dbo.collection('mask_donors');
 
-			var newData = {"f_name": f_name, "l_name": l_name};
+			var newData = {"f_name": f_name, "l_name": l_name, "mask_num": mask_num, 
+						   "zip": zip, "state": state};
 			collection.insertOne(newData, function(err, res) {
 			if (err) throw err;
 			console.log("new document inserted");
