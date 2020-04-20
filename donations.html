@@ -8,9 +8,7 @@
 </head>
 
 <body>
-	<script language="javascript">
-
-
+	<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"language="javascript">
 		function validate()
 		{
 			with(document.forms[0])
@@ -45,7 +43,7 @@
 	</script>
 	<div style="margin-left: 2%">
 	<h2> Mask Donation Form </h2>
-		<form method="get" action="http://localhost:8080" onsubmit="return validate()">
+		<form class="block_form" method="get" action="http://localhost:8080" onsubmit="return validate()">
 			First Name: <input type="text" name="f_name">
 			Last Name:  <input type="text" name="l_name">
 			<br/> <br/>
