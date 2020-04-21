@@ -27,6 +27,11 @@ td, th
 	padding: 8px;
 }
 
+th:hover
+{
+	cursor: pointer;
+}
+
 tr:nth-child(even) 
 {
 	background-color: #eeeeee;
@@ -34,10 +39,11 @@ tr:nth-child(even)
 
 #container 
 {
-	width: 50%;
+	width: 600px;
 	height: 50%;
 	margin: 0;
 	padding: 0;
+	margin-bottom: 30px;
 }
 
 </style>
@@ -58,7 +64,7 @@ tr:nth-child(even)
 					result = request.responseText;
 					data = JSON.parse(result);
 
-					text = "<table id='table'><tr><th><input onchange='update_all_checkboxes()' type='checkbox' name='row'/></th><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
+					text = "<table id='table'><tr><th><input onchange='update_all_checkboxes()' type='checkbox' name='row'/></th><th onClick='sortBy(1)'>&#9660; State</th><th onClick='sortBy(2)'>&#9661; Total Positive Cases</th><th onClick='sortBy(3)'>&#9661; Daily Positive Increase</th><th onClick='sortBy(4)'>&#9661; Total Deaths</th><th onClick='sortBy(5)'>&#9661; Daily Death Increase</th></tr>";
 
 					for (i = 0; i < 56; i++) 
 					{
@@ -93,7 +99,7 @@ tr:nth-child(even)
 				chart.data(data);
 
 				// set the chart title
-				chart.title("Total Positive Cases in Selected States");
+				chart.title("Selected states below to see them here.");
 
 				// draw
 				chart.container("container");
@@ -116,47 +122,48 @@ tr:nth-child(even)
 			update_chart();
 		}
 		
-		function sortBy(obj)
-		{
-			// alert(document.getElementById("container").innerHTML);
+		var sorted_by_index = 1;
+		var descending = true;
 
+		function sortBy(index)
+		{
 			var table, rows, switching, i, x, y, shouldSwitch;
 			table = document.getElementById("table");
 			switching = true;
 
-			/*Make a loop that will continue until
-			no switching has been done:*/
+			if (index == sorted_by_index) descending = !descending;
+			else descending = true;
+
+			fix_table(sorted_by_index, index);
+			sorted_by_index = index;
+
 			while (switching) 
 			{
-				//start by saying: no switching is done:
 				switching = false;
 				rows = table.rows;
-				/*Loop through all table rows (except the
-				first, which contains table headers):*/
+
 				for (i = 1; i < (rows.length - 1); i++) 
 				{
-					//start by saying there should be no switching:
 					shouldSwitch = false;
-					/*Get the two elements you want to compare,
-					one from current row and one from the next:*/
-					x = rows[i].getElementsByTagName("TD")[obj.selectedIndex+1].innerHTML;
-					y = rows[i + 1].getElementsByTagName("TD")[obj.selectedIndex+1].innerHTML;
-					
-					if (obj.selectedIndex != 0)
+
+					x = rows[i].getElementsByTagName("TD")[sorted_by_index].innerHTML;
+					y = rows[i + 1].getElementsByTagName("TD")[sorted_by_index].innerHTML;
+
+					if (sorted_by_index == 1)
+					{
+						if (descending) comparison = x > y;
+						else comparison = x < y;
+					}
+					else
 					{
 						x = parseInt(x);
 						y = parseInt(y);
-						comparison = x < y
-					}
-					else 
-					{
-						comparison = x > y
+						if (descending) comparison = x < y;
+						else comparison = x > y;
 					}
 
-					//check if the two rows should switch place:
 					if (comparison)
 					{
-						//if so, mark as a switch and break the loop:
 						shouldSwitch = true;
 						break;
 					}
@@ -164,66 +171,55 @@ tr:nth-child(even)
 				}
 				if (shouldSwitch) 
 				{
-					/*If a switch has been marked, make the switch
-					and mark that a switch has been done:*/
 					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
 					switching = true;
 				}
-			}
+			}	 
+		}
 
-			/* Shiv's old sorting code
-			data = document.getElementById("data").innerHTML;
-			state = data.split("<br>");
-			//alert(state[0]);
-			//values = state[0].match(/\d+/g);
-			//alert(values);
-			arr = [];
-			for (i = 0; i < 55; i++) {
-				values = state[i].match(/\d+/g);
-				values.push(state[i]);
-				values.push(i);
-				arr.push(values);
-			}
-			//console.log(arr);
+		function fix_table(old_i, new_i)
+		{
+			old_str = document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML;
 
-			if (document.getElementById("sort").value == "Total Positive Cases") {
-				for(i = 0; i < 55; i++){
-       				 for(j = i+1; j < 55; j++){
-            			if(arr[i][0] > arr[j][0]){
-                			temp = arr[i];
-                			arr[i] = arr[j];
-                			arr[j] = temp;
-            			}
-        			}
-    			}
-    			console.log(arr);
-    			document.getElementById("data").innerHTML = null;
-    			for (i = 0; i < 55; i++){
-    				document.getElementById("data").innerHTML += arr[i][4] + "<br>";
-    			}
+			// if (new_i == 1)
+			// {
+			// 	if (descending) document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9660;" + old_str.substring(1);
+			// 	else document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9650;" + old_str.substring(1);
+			// }
+			// else
+			// {
+			if (old_i == new_i)
+			{
+				if (descending) document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9660;" + old_str.substring(1);
+				else document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9650;" + old_str.substring(1);
 			}
-			*/	 
+			else
+			{
+				new_str = document.getElementById("table").rows[0].getElementsByTagName("TH")[new_i].innerHTML;
+
+				document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9661;" + old_str.substring(1);
+				document.getElementById("table").rows[0].getElementsByTagName("TH")[new_i].innerHTML = "&#9660;" + new_str.substring(1);
+			}
+			
 		}
 	
 
 	</script>
 </head>
 <body onload="getData()">
-	<h1>API Test</h1>
-
-	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<div id="container"></div>
-
+	<!-- <h1>API Test</h1> -->
 	<h3 style="margin-bottom: 5px">Sort by: </h3>
 	<form style="margin-bottom:20px">
-		<select id="sort" onchange="sortBy(this)">
-			<option>None</option>
+		<select id="sort" onchange="update_chart()">
 			<option>Total Positive Cases</option>
 			<option>Daily Positive Case Increase</option>
 			<option>Total Deaths</option>
 			<option>Daily Death Increase</option>
 		</select>
 	</form>
+
+	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+	<div id="container"></div>
 
 	<div id="blah"></div>
 
@@ -239,13 +235,15 @@ tr:nth-child(even)
 			document.getElementById("container").innerHTML = "";
 			table = document.getElementById("table");
 			rows = table.rows;
+			dropdown = document.getElementById("sort");
+
 			for (i = 1; i < rows.length; i++) 
 			{
 				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
 				{
 					// gets total positive cases only
 					state_name = rows[i].getElementsByTagName("TD")[1].innerHTML;
-					stat = parseInt(rows[i].getElementsByTagName("TD")[2].innerHTML);
+					stat = parseInt(rows[i].getElementsByTagName("TD")[dropdown.selectedIndex+2].innerHTML);
 					arr.push ([state_name, stat]);
 				}
 			}
@@ -266,7 +264,10 @@ tr:nth-child(even)
 				chart.data(data);
 
 				// set the chart title
-				chart.title("Total Positive Cases in Selected States");
+				selected = dropdown.options[dropdown.selectedIndex].value;
+				chart.title(selected + " in Selected States");
+				chart.xAxis().title("States");
+    			chart.yAxis().title(selected);
 
 				// draw
 				chart.container("container");
