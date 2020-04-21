@@ -44,12 +44,30 @@
 					document.forms[0].state.focus();
 					return false;
 				}	
+				if (state.value == "")
+				{
+					alert("State is required");
+					document.forms[0].state.focus();
+					return false;
+				}
+				if (state.value.length !== 2)
+				{
+					alert("Please enter two-letter state abbreviation");
+					document.forms[0].state.focus();
+					return false;
+				}
 				if (zip.value == "")
 				{
 					alert("Zip Code is required");
 					document.forms[0].zip.focus();
 					return false;
-				}				
+				}
+				if (zip.value.length !== 5)
+				{
+					alert("Please enter valid Zip Code");
+					document.forms[0].zip.focus();
+					return false;
+				}					
 			}
 			alert("Information successfully recorded. Thanks for donating!");
 			return true;
