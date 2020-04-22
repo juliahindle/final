@@ -83,25 +83,19 @@ tr:nth-child(even)
 
 			request.send();
 
-			// empty chart
 			anychart.onDocumentReady(function()
 	        {
-			    // set the data
 			    var data = {
 			      	rows: []
 		           };
 
-				// create the chart
 				var chart = anychart.column();
 				chart.normal().fill("#425957");
 				
-				// add data
 				chart.data(data);
 
-				// set the chart title
 				chart.title("Selected states below to see them here.");
 
-				// draw
 				chart.container("container");
 				chart.draw();
 			});
@@ -181,13 +175,6 @@ tr:nth-child(even)
 		{
 			old_str = document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML;
 
-			// if (new_i == 1)
-			// {
-			// 	if (descending) document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9660;" + old_str.substring(1);
-			// 	else document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9650;" + old_str.substring(1);
-			// }
-			// else
-			// {
 			if (old_i == new_i)
 			{
 				if (descending) document.getElementById("table").rows[0].getElementsByTagName("TH")[old_i].innerHTML = "&#9660;" + old_str.substring(1);
@@ -208,7 +195,7 @@ tr:nth-child(even)
 </head>
 <body onload="getData()">
 	<!-- <h1>API Test</h1> -->
-	<h3 style="margin-bottom: 5px">Sort by: </h3>
+	<h3 style="margin-bottom: 5px">Graph: </h3>
 	<form style="margin-bottom:20px">
 		<select id="sort" onchange="update_chart()">
 			<option>Total Positive Cases</option>
