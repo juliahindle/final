@@ -5,7 +5,7 @@
   "main": "donations.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node donations.js"
+    "start": "node donations.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/juliahindle/final#readme",
   "dependencies": {
-    "mongodb": "^3.5.6"
+    "mongodb": "^3.5.6",
+    "zipcodes": "^8.0.0"
   }
 }
