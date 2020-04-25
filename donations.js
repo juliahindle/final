@@ -16,15 +16,14 @@ async function main()
 		var mask_num = qobj.masks;
 		var zip = qobj.zip;
 		var state = qobj.state;
-		var phone = qobj.phone;
-		add_to_db(f_name, l_name, mask_num, zip, state, phone);
+		add_to_db(f_name, l_name, mask_num, zip, state);
 
 	    res.end();
 	}).listen(port);
 }
 main().catch(console.error);
 
-async function add_to_db(f_name,l_name, mask_num, zip, state, phone){
+async function add_to_db(f_name,l_name, mask_num, zip, state){
 	if (f_name != null){
 		const uri = "mongodb+srv://webalub:comp20tufts@cluster0-jnsgs.mongodb.net/test?retryWrites=true&w=majority"
 
@@ -34,7 +33,7 @@ async function add_to_db(f_name,l_name, mask_num, zip, state, phone){
 			var collection = dbo.collection('mask_donors');
 
 			var newData = {"f_name": f_name, "l_name": l_name, "mask_num": mask_num, 
-						   "zip": zip, "state": state, "phone": phone};
+						   "zip": zip, "state": state};
 			collection.insertOne(newData, function(err, res) {
 			if (err) throw err;
 			console.log("new document inserted");
