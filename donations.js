@@ -24,7 +24,7 @@ async function main()
 }
 main().catch(console.error);
 
-async function add_to_db(f_name,l_name, mask_num, zip, state){
+async function add_to_db(f_name,l_name, mask_num, zip, state, phone){
 	if (f_name != null){
 		const uri = "mongodb+srv://webalub:comp20tufts@cluster0-jnsgs.mongodb.net/test?retryWrites=true&w=majority"
 
