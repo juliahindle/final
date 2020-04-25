@@ -20,3 +20,29 @@ h1{
 	font-weight: 800;
 	letter-spacing: 4px;
 }
+
+
+/* ---------footer design--------------- */
+footer{
+	border-top: 1px dotted #344341;
+	bottom: 0 !important;
+	position: absolute;
+	left: 0;
+	height: 40px;
+	overflow: hidden;
+	margin-top: 10px;
+	width: 100%;
+	max-width: 100%;
+	background-color: #e8e8e8;
+	font-size: 16px;
+	font-family: 'Bebas Neue', cursive;
+	letter-spacing: 1px;
+}
+
+footer div{
+	margin-left: 4px;
+	bottom: 0;
+	position: absolute;
+	margin-bottom: 9px;
+}
+/* ------------end footer design------------ */
