@@ -1,4 +1,3 @@
-//https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb--how-to-get-connected-to-your-database
 //Install zip codes module with npm i zipcodes
 // USED https://github.com/davglass/zipcodes as a zip code module
 
@@ -18,6 +17,7 @@ async function main()
 		res.writeHead(200, {'Content-Type':'text/html'});
 		var qobj = url.parse(req.url, true).query;
 		var zip = qobj.zip;
+		var donation_index = -1;
 
 		if (zip != null)
 	{
@@ -40,9 +40,18 @@ async function main()
 					if (curr_dist < min_dist && curr_dist != null)
 					{
 						min_dist = curr_dist;
+						donation_index = index;
 					}
 				} 
-				console.log("MIN DIST: " + min_dist)
+				try {
+					console.log("MIN DIST: " + min_dist)
+					console.log("Donator name: " + query[donation_index].f_name + " " + query[donation_index].l_name);
+					console.log("Masks available: " + query[donation_index].mask_num);
+					console.log("State: " + query[donation_index].state);
+					console.log("Phone number: " + query[donation_index].phone);
+				} catch(e) {
+					console.log(e);
+				}
 	        });
 		});
 	}
