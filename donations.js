@@ -39,7 +39,7 @@ async function main()
 				client.close();
 			});
 	}
-	await fs.readFile('https://juliahindle.github.io/final/thanks.html', null, function (err, data) {
+	await fs.readFile('./thanks.html', null, function (err, data) {
 		if (err) {
 			res.writeHead(404);
 			res.write('File Not Found');
