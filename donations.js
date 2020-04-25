@@ -16,7 +16,8 @@ async function main()
 		var mask_num = qobj.masks;
 		var zip = qobj.zip;
 		var state = qobj.state;
-		add_to_db(f_name, l_name, mask_num, zip, state);
+		var phone = qobj.phone;
+		add_to_db(f_name, l_name, mask_num, zip, state, phone);
 
 	    res.end();
 	}).listen(port);
@@ -33,7 +34,7 @@ async function add_to_db(f_name,l_name, mask_num, zip, state){
 			var collection = dbo.collection('mask_donors');
 
 			var newData = {"f_name": f_name, "l_name": l_name, "mask_num": mask_num, 
-						   "zip": zip, "state": state};
+						   "zip": zip, "state": state, "phone": phone};
 			collection.insertOne(newData, function(err, res) {
 			if (err) throw err;
 			console.log("new document inserted");
