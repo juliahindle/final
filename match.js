@@ -19,7 +19,9 @@ async function main()
 		var zip = qobj.zip;
 		var donation_index = -1;
 
-		if (zip != null)
+
+	// ---------------------- start of if-block -----------------------
+	if (zip != null)
 	{
 		MongoClient.connect(uri, { useUnifiedTopology: true }, async function(err, client) {
 			if(err) { return console.log(err); }
@@ -55,6 +57,9 @@ async function main()
 	        });
 		});
 	}
+	// ---------------------- end of if-block -----------------------
+
+
 	res.end();
 	}).listen(port);
 }
