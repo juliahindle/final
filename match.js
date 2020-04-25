@@ -9,6 +9,9 @@ var port = process.env.PORT || 8080; // to enable access by heroku
 var http = require('http');
 var url = require('url');
 var zipcodes = require('zipcodes');
+var my_data = [];
+var donation_index = -1;
+
 
 async function main()
 {
@@ -17,8 +20,6 @@ async function main()
 		res.writeHead(200, {'Content-Type':'text/html'});
 		var qobj = url.parse(req.url, true).query;
 		var zip = qobj.zip;
-		var donation_index = -1;
-
 
 	// ---------------------- start of if-block -----------------------
 	if (zip != null)
@@ -32,6 +33,7 @@ async function main()
 			await collection.find().toArray(function(err, result) {
 	            if (err) { return console.log(err); }
 	            var query = result;
+	            my_data = query;
 	            console.log(query);
 	            client.close();
 	            var min_dist = zipcodes.distance(zip, query[0].zip);
@@ -59,10 +61,33 @@ async function main()
 	}
 	// ---------------------- end of if-block -----------------------
 
+	await sleep(1000);
 
-	res.end();
+	// write to the page
+	try{
+		console.log(donation_index);
+		res.write('<html><head><title>Find Masks Near You</title></head><link rel="stylesheet" type="text/css" href="https://juliahindle.github.io/final/style.css" /><body>');
+		res.write("<h1>Find Masks Near Your Location</h1>");
+		res.write("<div class='result'> The person closest to your location is " + my_data[donation_index].f_name + " " + my_data[donation_index].l_name + ".");
+		res.write("<br /> They have " + my_data[donation_index].mask_num + " masks available. You can reach them at their phone number, " + my_data[donation_index].phone + ".");
+	} catch(e) {
+		res.write("<script type='text/javascript'>alert('The zip code you entered may not be a valid zip code. Please try again.')</script>");
+		console.log(e);
+	}
+	finally{
+	res.write("<p>To get back, please click <a href='https://juliahindle.github.io/final/donations.html'>here</a></p>");
+    res.end("</body></html>");
+}
 	}).listen(port);
 }
 main().catch(console.error);
 
+
+
+// function sleep - waits for the specified amount of time (in milliseconds)
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}   
 
