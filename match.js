@@ -5,6 +5,7 @@
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://webalub:comp20tufts@cluster0-jnsgs.mongodb.net/test?retryWrites=true&w=majority";
+var port = process.env.PORT || 8080; // to enable access by heroku
 
 var http = require('http');
 var url = require('url');
@@ -18,7 +19,7 @@ async function main()
 		var qobj = url.parse(req.url, true).query;
 		var zip = qobj.zip;
 		find_donor(zip, res);
-	}).listen(8080);
+	}).listen(port);
 }
 main().catch(console.error);
 
