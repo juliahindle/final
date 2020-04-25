@@ -19,7 +19,6 @@
 			masks = document.forms[0].masks.value;
 			state = document.forms[0].state.value;
 			zip = document.forms[0].zip.value;
-			phone = document.forms[0].phone.value;
 
 			with(document.forms[0])
 			{
@@ -59,37 +58,6 @@
 					document.forms[0].state.focus();
 					return false;
 				}
-	 			if(phone.value == ""){
-	 				alert("Must enter phone number");
-	 				return false;
-	 			}
-	 			if (phone.value.length !== 10){
-	 				alert("Must enter valid phone number (10 digits without special characters)");
-	 				return false;
-	 			}
-				if (zip.value == "")
-				{
-					alert("Zip Code is required");
-					document.forms[0].zip.focus();
-					return false;
-				}
-				if (zip.value.length !== 5)
-				{
-					alert("Please enter valid Zip Code");
-					document.forms[0].zip.focus();
-					return false;
-				}					
-			}
-			alert("Information successfully recorded. Thanks for donating!");
-			return true;
-		}
-
-		function validate2()
-		{
-			zip = document.forms[1].zip.value;
-
-			with(document.forms[1])
-			{
 				if (zip.value == "")
 				{
 					alert("Zip Code is required");
@@ -111,7 +79,7 @@
 
 	<div style="margin-left: 2%">
 	<h2> Mask Donation Form </h2>
-		<form method="get" action="https://donations-tracker-comp20.herokuapp.com" target="formDestination">
+		<form class="block_form" method="get" action="https://donations-tracker-comp20.herokuapp.com" target="formDestination">
 			First Name: <input type="text" name="f_name">
 			Last Name:  <input type="text" name="l_name">
 			<br/> <br/>
@@ -121,19 +89,7 @@
 			<br/><br/>
 			Zip Code: <input type="text" name="zip">
 			<br/><br/>
-			Phone Number: <input type="text" name="phone">
-			<br/><br/>
 			<input type="submit" value="Make Your Donation Available" onclick="return validate()">
-			<input type="reset" name="reset" value="Reset Form"></button>
-		</form>
-	<br/>
-	<h2> Search for Mask Donors Near You </h2>
-		<form method="get" action="https://donations-tracker-comp20.herokuapp.com" target="formDestination">
-			Enter Your Zip Code: <input type="text" name="zip">
-			<br/><br/>
-			Phone Number: <input type="text" name="phone">
-			<br/><br/>
-			<input type="submit" value="Make Your Donation Available" onclick="return validate2()">
 			<input type="reset" name="reset" value="Reset Form"></button>
 		</form>
 	</div>
