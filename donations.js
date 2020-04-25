@@ -8,7 +8,7 @@ var port = process.env.PORT || 8080; // to enable access by heroku
 
 async function main()
 {
-	http.createServer(function(req, res){
+	http.createServer(async function(req, res){
 		res.writeHead(200, {'Content-Type':'text/html'});
 		var qobj = url.parse(req.url, true).query;
 		var f_name = qobj.f_name;
@@ -17,7 +17,7 @@ async function main()
 		var zip = qobj.zip;
 		var state = qobj.state;
 		var phone = qobj.phone;
-		add_to_db(f_name, l_name, mask_num, zip, state, phone);
+		await add_to_db(f_name, l_name, mask_num, zip, state, phone);
 
 	    res.end();
 	}).listen(port);
