@@ -63,7 +63,7 @@ async function main()
 
 	await sleep(1000);
 
-	// write to the page
+	// ---------------------- write to the page ----------------------
 	try{
 		console.log(donation_index);
 		res.write('<html><head><title>Find Masks Near You</title></head><link rel="stylesheet" type="text/css" href="https://juliahindle.github.io/final/style.css" /><body>');
@@ -78,6 +78,8 @@ async function main()
 	res.write("<p>To get back, please click <a href='https://juliahindle.github.io/final/donations.html'>here</a></p>");
     res.end("<footer><div>&copy; Team Webalubadubdub, 2020</div></footer></body></html>");
 }
+// ------------------------- end of write ------------------------------
+
 }).listen(port);
 }
 main().catch(console.error);
