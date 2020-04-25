@@ -1,3 +1,14 @@
+* {
+	box-sizing: border-box;
+}
+
+
+/*
+TODO: add styling for donations page, thanks for donating page and external result page
+also, add footer style
+*/
+
+
 h1{
 	font-size: 400%;
 	position: relative;

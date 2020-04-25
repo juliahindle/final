@@ -69,7 +69,7 @@ async function main()
 		res.write('<html><head><title>Find Masks Near You</title></head><link rel="stylesheet" type="text/css" href="https://juliahindle.github.io/final/style.css" /><body>');
 		res.write("<h1>Find Masks Near Your Location</h1>");
 		res.write("<div class='result'> The person closest to your location is " + my_data[donation_index].f_name + " " + my_data[donation_index].l_name + ".");
-		res.write("<br /> They have " + my_data[donation_index].mask_num + " masks available. You can reach them at their phone number, " + my_data[donation_index].phone + ".");
+		res.write("<br /> They have " + my_data[donation_index].mask_num + " masks available. You can reach them at their phone number, " + my_data[donation_index].phone + ".</div>");
 	} catch(e) {
 		res.write("<script type='text/javascript'>alert('The zip code you entered may not be a valid zip code. Please try again.')</script>");
 		console.log(e);
@@ -78,7 +78,7 @@ async function main()
 	res.write("<p>To get back, please click <a href='https://juliahindle.github.io/final/donations.html'>here</a></p>");
     res.end("</body></html>");
 }
-	}).listen(port);
+}).listen(port);
 }
 main().catch(console.error);
 
