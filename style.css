@@ -2,6 +2,13 @@
 	box-sizing: border-box;
 }
 
+html{
+	position: relative;
+	min-height: 100%; /*required for footer*/
+	padding-bottom: 40px;
+	scroll-behavior: smooth;
+}
+
 
 /*
 TODO: add styling for donations page, thanks for donating page and external result page
