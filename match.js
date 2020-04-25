@@ -32,7 +32,7 @@ async function find_donor(zip, res){
 			let dbo = client.db("masks");
 			let collection = dbo.collection('mask_donors');
 
-			collection.find().toArray(function(err, result) {
+			await collection.find().toArray(function(err, result) {
 	            if (err) { return console.log(err); }
 	            var query = result;
 	            console.log(query);
@@ -46,7 +46,6 @@ async function find_donor(zip, res){
 					{
 						min_dist = curr_dist;
 					}
-					console.log("MIN DIST: " + min_dist)
 				} 
 				console.log("MIN DIST: " + min_dist)
 	            res.end();
