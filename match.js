@@ -76,7 +76,7 @@ async function main()
 	}
 	finally{
 	res.write("<p>To get back, please click <a href='https://juliahindle.github.io/final/donations.html'>here</a></p>");
-    res.end("</body></html>");
+    res.end("<footer><div>&copy; Team Webalubadubdub, 2020</div></footer></body></html>");
 }
 }).listen(port);
 }
