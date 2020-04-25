@@ -39,7 +39,7 @@ async function find_donor(zip, res){
 	            client.close();
 	            var min_dist = zipcodes.distance(zip, query[0].zip);
 	            var curr_dist = 0;
-	            for (index = 1; index < query.length; index++) { 
+	            for (index = 0; index < query.length; index++) { 
 	            	curr_dist = zipcodes.distance(zip, query[index].zip);
 	            	console.log ("CURR DIST BETWEEN: " + zip + " and " + query[index].zip + " is " + curr_dist);
 					if (curr_dist < min_dist && curr_dist != null)
