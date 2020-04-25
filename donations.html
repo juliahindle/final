@@ -191,6 +191,31 @@
 	</div>
 </footer>
 
+<!------------------------- floating TOP button ----------------------------->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<script type="text/javascript">
+	
+	btn_top = document.getElementById("myBtn");
+
+
+	window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    btn_top.style.display = "block";
+  } else {
+    btn_top.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+</script>
+<!--------------------- end of floating TOP button --------------------------->
+
 </body>
  
 </html>

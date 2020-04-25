@@ -53,3 +53,27 @@ footer div{
 	margin-bottom: 9px;
 }
 /* ------------end footer design------------ */
+
+
+
+/* ------------TOP button design------------ */
+#myBtn {
+	  display: none; 
+	  position: fixed; 
+	  bottom: 22px; 
+	  right: 30px; 
+	  z-index: 20; 
+	  border: none; 
+	  outline: none;
+	  background-color: #565FA6;
+	  color: #FFFFFF; 
+	  cursor: pointer; 
+	  padding: 15px;
+	  border-radius: 10px;
+	  font-size: 18px;
+}
+
+#myBtn:hover {
+		 background-color: #555; 
+}
+/* ------------end TOP button design------------ */
