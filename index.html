@@ -2,54 +2,6 @@
 <html>
 <style type="text/css">
 
-h1, form
-{
-	text-align: center;
-}
-
-/*table 
-{
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-}
-
-td, th 
-{
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
-}*/
-
-table {
-  border-collapse: collapse;
-  margin: auto;
-  /*width: 100%;*/
-  color: red;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-tr:hover {background-color:#f5f5f5;}
-
-th
-{
-	background-color: white !important;
-}
-
-th:hover
-{
-	cursor: pointer;
-}
-
-/*tr:nth-child(even) 
-{
-	background-color: #eeeeee;
-}*/
-
 .chart
 {
 	margin: auto;
@@ -261,8 +213,10 @@ th:hover
 	        anychart.onDocumentReady(function() 
 	        {
 	        	data = [];
-	        	colors = anychart.palettes.defaultPalette;
+	        	// colors = anychart.palettes.defaultPalette;
+	        	colors = ["#e47d50", "#f6c55f", "#2d5356", "#147d9b", "#a5d1ec"];
 	        	colors_len = colors.length;
+	        	// alert(colors_len);
 
 	        	for (i = 0; i < arr.length; i++)
 	        	{
@@ -341,19 +295,22 @@ th:hover
 	<script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
 </head>
 <body onload="getData()">
-	<h1>COVID-19 LIVE STATISTICS</h1>
-
-<!-- 	<nav style="z-index: 100">
-		<div class="nav">
-			<ul>
-				<li><a class="current" href="#">Home</a></li>
-				<li><a href="donations.html">Donate Masks</a></li>
-
-		</ul>
-		</div>
-	</nav> -->
-
-	<!-- <h3 style="margin-bottom: 5px">Graph: </h3> -->
+	<div class="heading">
+        <div>
+            <header><h1>COVID-19 LIVE STATISTICS</h1></header>
+        </div>    
+        <div>
+            <nav style="z-index: 100">
+                <div class="nav">
+                    <ul>                
+                       <li><a class="current" href="#">Home</a></li>
+					<li><a href="donations.html">Donate Masks</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    
 	<form style="margin-bottom:20px">
 		<select id="sort" onchange="update_visuals()">
 			<option>Total Positive Cases</option>
