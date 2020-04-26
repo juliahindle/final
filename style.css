@@ -74,12 +74,19 @@ nav .nav ul li a.current{
 
 .donations{
 	display: flex;
+	padding-top: 50px;
+}
 
+.donations h3{
+	text-align: center;
+	padding-bottom: 15px;
 }
 
 .form1{
 	margin: 20px;
 	padding: 25px;
+	position: absolute;
+	left: 15%;
 	border-style: solid; 
 	border-width: 3px;
 	border-color: #EB8258;
@@ -90,6 +97,8 @@ nav .nav ul li a.current{
 .form2{
 	margin: 20px;
 	padding: 25px;
+	position: absolute;
+	right: 15%;
 	border-style: solid;
 	border-width: 3px;
 	border-color: #EB8258;
@@ -105,6 +114,7 @@ input {
 	border-radius: 5px;
 	font-family: 'Manrope', sans-serif;
 	font-weight: 400;
+	padding: 5px;
 }
 
 input 
@@ -119,10 +129,10 @@ footer{
 	margin-top: 10px;
 	width: 100%;
 	max-width: 100%;
-	background-color: #e8e8e8;
 	font-size: 16px;
-	font-family: helvetica, sans-serif;
+	font-family: 'Manrope', sans-serif;
 	letter-spacing: 1px;
+	color: #EB8258;
 }
 
 footer div{
