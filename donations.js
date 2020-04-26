@@ -5,7 +5,6 @@ const MongoClient = require('mongodb').MongoClient;
 var http = require('http');
 var url = require('url');
 var port = process.env.PORT || 8080; // to enable access by heroku
-const fs = require('fs');
 
 async function main()
 {
@@ -39,17 +38,10 @@ async function main()
 				client.close();
 			});
 	}
-	await fs.readFile('./thanks.html', null, function (err, data) {
-		if (err) {
-			res.writeHead(404);
-			res.write('File Not Found');
-		} else {
-			res.write(data);
-		}
-		res.end();
-	}	
-	); 
-	
+	var html1 = '<html><head><title>Thank You!</title><link rel="stylesheet" type="text/css" href="https://juliahindle.github.io/final/style.css" /></head>';
+	var html2 = '<body><h1> Thank you for donating! </h1><br /> <br /><h4> To go back to the form, click <a href="https://juliahindle.github.io/final/donations.html">here</a>. <br />If you want to go back to the home page instead, click <a href="https://juliahindle.github.io/final/">here</a>.</h4><footer><div>&copy; Team Webalubadubdub, 2020</div></footer>';
+	res.write(html1 + html2);
+	res.end('</body></html>');
 	}
 
 	http.createServer(insertData).listen(port);
