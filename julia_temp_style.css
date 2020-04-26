@@ -1,0 +1,42 @@
+.chart
+{
+	margin: auto;
+	width: 450px;
+	height: 236px;
+	margin-bottom: 30px;
+	display: inline-block;
+}
+
+.section
+{
+	width: 46%;
+	max-width: 600px;
+	min-width: 500px;
+	height: 600px;
+	display: inline-block;
+}
+
+.box
+{
+	height: 90%;
+	outline: 3px solid #EB8258;
+	margin: 30px;
+}
+
+#box1 { overflow-y: scroll; }
+#box2 { overflow-y: hidden; padding: 20px;}
+
+#main
+{
+	text-align: center;
+}
+
+#compareForm
+{
+	display: inline-block;
+}
+
+.headOfBox
+{
+	color: #EB8258;
+}

@@ -2,24 +2,17 @@
 <html>
 <style type="text/css">
 
-.chart
-{
-	margin: auto;
-	width: 500px;
-	height: 300px;
-	margin-bottom: 30px;
-	display: inline-block;
-}
-
 </style>
 <head>
 	<title>COVID-19 Live Statistics</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="julia_temp_style.css">
 	<link href="https://fonts.googleapis.com/css?family=Manrope:200,400,700,800&display=swap" rel="stylesheet">
 	<meta charset="utf-8"/>
 	<script>
 
 		var history_arr = [];
+		var colors = ["#f6c55f", "#147d9b", "#a5d1ec", "#e47d50"];
 
 		function getData() 
 		{
@@ -58,17 +51,29 @@
 			anychart.onDocumentReady(function()
 	        {
 				var chart = anychart.column();
-				chart.title("Selected states below to see them here.");
-				chart.xAxis().title("States");
-    			chart.yAxis().title("Total Positive Cases");
+				// chart.title("Selected states below to see them here.");
+				var x = chart.xAxis().title();
+				x.enabled(true);
+				x.useHtml(true);
+				x.text("<a style='color:#EB8258'>States</a>");
+				var y = chart.yAxis().title();
+				y.enabled(true);
+				y.useHtml(true);
+				y.text("<a style='color:#EB8258'>Total Positive Cases</a>");
     			chart.background().fill(null);
 				chart.container("container");
 				chart.draw();
 
 				var chart2 = anychart.line();
-				chart2.title("Selected states below to see them here.");
-				chart2.xAxis().title("Time");
-    			chart2.yAxis().title("Total Positive Cases");
+				// chart2.title("Selected states below to see them here.");
+				var x2 = chart2.xAxis().title();
+				x2.enabled(true);
+				x2.useHtml(true);
+				x2.text("<a style='color:#EB8258'>Time</a>");
+				var y2 = chart2.yAxis().title();
+				y2.enabled(true);
+				y2.useHtml(true);
+				y2.text("<a style='color:#EB8258'>Total Positive Cases</a>")
     			chart2.background().fill(null);
     			chart2.container("container2");
 				chart2.draw();
@@ -213,24 +218,26 @@
 	        anychart.onDocumentReady(function() 
 	        {
 	        	data = [];
-	        	// colors = anychart.palettes.defaultPalette;
-	        	colors = ["#e47d50", "#f6c55f", "#2d5356", "#147d9b", "#a5d1ec"];
-	        	colors_len = colors.length;
-	        	// alert(colors_len);
 
 	        	for (i = 0; i < arr.length; i++)
 	        	{
 	        		data.push({x: arr[i][0], value: arr[i][1], fill: colors[i % colors.length], stroke: null});
 	        	}
 
-				var chart = anychart.column();
+				chart = anychart.column();
 				
 				chart.column(data);
 
 				selected = dropdown.options[dropdown.selectedIndex].value;
-				chart.title(selected + " in Selected States");
-				chart.xAxis().title("States");
-    			chart.yAxis().title(selected);
+				// chart.title(selected + " in Selected States");
+				var x = chart.xAxis().title();
+				x.enabled(true);
+				x.useHtml(true);
+				x.text("<a style='color:#EB8258'>States</a>");
+				var y = chart.yAxis().title();
+				y.enabled(true);
+				y.useHtml(true);
+				y.text("<a style='color:#EB8258'>" + selected + "</a>");
     			chart.background().fill(null);
 
 				chart.container("container");
@@ -273,16 +280,21 @@
 
 	        anychart.onDocumentReady(function() 
 	        {
-			    var data = anychart.data.set (arr.reverse());
-
-				var chart = anychart.line();
+			    data = anychart.data.set (arr.reverse());
+				chart = anychart.line();
 
 				for (i = 0; i < num_checked; i++)
-					chart.line(data.mapAs({x: 0, value: i+1})).name(states_arr[i]);
+					chart.line(data.mapAs({x: 0, value: i+1})).name(states_arr[i]).stroke(colors[i % colors.length]);
 
-				chart.title(selected + " in Selected States");
-				chart.xAxis().title("Time");
-    			chart.yAxis().title(selected);
+				// chart.title(selected + " in Selected States");
+				var x = chart.xAxis().title();
+				x.enabled(true);
+				x.useHtml(true);
+				x.text("<a style='color:#EB8258'>Time</a>");
+				var y = chart.yAxis().title();
+				y.enabled(true);
+				y.useHtml(true);
+				y.text("<a style='color:#EB8258'>" + selected + "</a>");
     			chart.background().fill(null);
 
 				chart.container("container2");
@@ -310,23 +322,35 @@
             </nav>
         </div>
     </div>
-    
-	<form style="margin-bottom:20px">
-		<select id="sort" onchange="update_visuals()">
-			<option>Total Positive Cases</option>
-			<option>Daily Positive Case Increase</option>
-			<option>Total Deaths</option>
-			<option>Daily Death Increase</option>
-		</select>
-	</form>
 
-	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<div class=chart id="container"></div>
-	<div class=chart id="container2"></div>
+    <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
 
-	<div id="blah"></div>
+    <div id="main">
+    	<div class="section" id="section1">
+    		<div class="headOfBox" id="headOfBox1">Select the states to compare on the graphs to the right.</br>Click the triangles to reorganize the table by category.</div>
+		    <div class="box" id="box1">
+	    		<span id="data"></span>
+		    </div>
+		</div>
+		<div class="section" id="section2">
+			<div class="headOfBox" id="headOfBox2">
+				Compare Selected States By:&nbsp
+				<form id="compareForm">
+					<select id="sort" onchange="update_visuals()">
+						<option>Total Positive Cases</option>
+						<option>Daily Positive Case Increase</option>
+						<option>Total Deaths</option>
+						<option>Daily Death Increase</option>
+					</select>
+				</form>
+			</div>
+		    <div class="box" id="box2">
+		    	<div class=chart id="container"></div>
+				<div class=chart id="container2"></div>
+		    </div>
+		</div>
+	</div>
 
-	<div id="data"></div>
 
 
 <!------------------------- floating TOP button ----------------------------->
