@@ -109,6 +109,7 @@ th:hover
 				chart.title("Selected states below to see them here.");
 				chart.xAxis().title("States");
     			chart.yAxis().title("Total Positive Cases");
+    			chart.background().fill(null);
 				chart.container("container");
 				chart.draw();
 
@@ -116,6 +117,7 @@ th:hover
 				chart2.title("Selected states below to see them here.");
 				chart2.xAxis().title("Time");
     			chart2.yAxis().title("Total Positive Cases");
+    			chart2.background().fill(null);
     			chart2.container("container2");
 				chart2.draw();
 			});
@@ -232,8 +234,6 @@ th:hover
 			
 		}
 
-		var colors = ["blue", "green", "orange", "red", "black", "purple", "brown"]
-
 		function update_visuals()
 		{
 			update_chart();
@@ -260,31 +260,48 @@ th:hover
 
 	        anychart.onDocumentReady(function() 
 	        {
-			    var data = { rows: arr };
+	        	data = [];
+	        	colors = anychart.palettes.defaultPalette;
+	        	colors_len = colors.length;
+
+	        	for (i = 0; i < arr.length; i++)
+	        	{
+	        		data.push({x: arr[i][0], value: arr[i][1], fill: colors[i % colors.length], stroke: null});
+	        	}
 
 				var chart = anychart.column();
 				
-				chart.data(data);
+				chart.column(data);
 
 				selected = dropdown.options[dropdown.selectedIndex].value;
 				chart.title(selected + " in Selected States");
 				chart.xAxis().title("States");
     			chart.yAxis().title(selected);
+    			chart.background().fill(null);
 
 				chart.container("container");
 				chart.draw();
 			});
 	    }
 
+	    var stand_in_dates = ["3/28", "3/29", "3/30", "3/31", "4/1", 
+	    				      "4/2", "4/3", "4/4", "4/5", "4/6", 
+	    				      "4/7", "4/8", "4/9", "4/10", "4/11",
+	    				      "4/12", "4/13", "4/14", "4/15", "4/16",
+	    				      "4/17", "4/18", "4/19", "4/20", "4/21",
+	    				      "4/22", "4/23", "4/24", "4/25", "4/26"];
+	    stand_in_dates = stand_in_dates.reverse();
+
 	    function update_plot()
 		{
 			arr = [];
+			states_arr = [];
 			document.getElementById("container2").innerHTML = "";
 			dropdown = document.getElementById("sort");
 			selected = dropdown.options[dropdown.selectedIndex].value;
 			num_checked = 0;
 
-			for (j = 0; j < history_arr[selected]["AK"].length; j++) arr.push([j]);
+			for (j = 0; j < history_arr[selected]["AK"].length; j++) arr.push([stand_in_dates[j]]);
 
 			for (i = 1; i < rows.length; i++) 
 			{
@@ -295,6 +312,7 @@ th:hover
 					{
 						arr[j].push([history_arr[selected][state_name][j]]);
 					}
+					states_arr.push(state_name);
 					num_checked++;
 				}
 			}
@@ -306,11 +324,12 @@ th:hover
 				var chart = anychart.line();
 
 				for (i = 0; i < num_checked; i++)
-					chart.line(data.mapAs({x: 0, value: i+1})).name("AK");
+					chart.line(data.mapAs({x: 0, value: i+1})).name(states_arr[i]);
 
 				chart.title(selected + " in Selected States");
 				chart.xAxis().title("Time");
     			chart.yAxis().title(selected);
+    			chart.background().fill(null);
 
 				chart.container("container2");
 				chart.draw();
