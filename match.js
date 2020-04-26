@@ -78,9 +78,9 @@ async function main()
 		res.write("<body><h1>Find Masks Near Your Location</h1>");
 		res.write("<div class='result'> The person closest to your location is " + my_data[donation_index].f_name + " " + my_data[donation_index].l_name + ".");
 		res.write("<br /> They have " + my_data[donation_index].mask_num + " masks available. You can reach them at their phone number, " + my_data[donation_index].phone + ".</div>");
-		res.write("You can view the approximate location of the donator below: <br /> <div class='map' id='map'></div>");
+		res.write("You can view the approximate location of the donator below: <br /> <div class='map' id='map' style='height:450px'></div>");
 		var attribution = "{ attribution: '&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors' }";
-		res.write("<script type='text/javascript'>var map = L.map('map').setView([51.505, -0.09], 13);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', "+ attribution+").addTo(map);L.marker([51.5, -0.09]).addTo(map)</script>");
+		res.write("<script type='text/javascript'>var map = L.map('map').setView(["+lat+", "+lng+"], 13);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', "+ attribution+").addTo(map);L.marker(["+lat+", "+lng+"]).addTo(map)</script>");
 	} catch(e) {
 		res.write("<script type='text/javascript'>alert('The zip code you entered may not be a valid zip code. Please try again.')</script>");
 		console.log(e);
