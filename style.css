@@ -9,6 +9,7 @@ html{
 	padding-bottom: 40px;
 	scroll-behavior: smooth;
 	font-family: 'Manrope', sans-serif;
+	background-color: #13293D;
 }
 
 
@@ -17,9 +18,12 @@ TODO: add styling for donations page, thanks for donating page and external resu
 also, add footer style
 */
 
+.heading{
+	display: flex;
+}
 
-h1{
-	font-size: 400%;
+header h1{
+	font-size: 300%;
 	position: relative;
 	top: 0px;
 	margin: 5px;
@@ -30,7 +34,116 @@ h1{
 	letter-spacing: 4px;
 }
 
+nav .nav {
+	font-family: 'Manrope', sans-serif;
+	letter-spacing: 1px;
 
+}
+
+nav .nav ul{
+	overflow: hidden;
+	list-style-type: none;
+	margin: 0;
+	padding-left: 10px;
+	width: 100%;
+	transition-duration: 0.6s;
+	z-index: 5;
+}
+
+nav .nav li{
+	display: inline-block;
+}
+
+nav .nav ul li a{
+	text-decoration: none;
+	display: block;
+	padding: 10px;	
+	font-size: 20px;
+	color: #EB8258;
+	text-align: center;
+}
+
+nav .nav ul li a.current{
+	text-decoration: none;
+	display: block;
+	padding: 10px;	
+	font-size: 20px;
+	color: #FFCC6A; /*change color*/
+	text-align: center;
+}
+
+nav .nav ul li a:hover{
+	text-decoration: none;
+	color: #FFCC6A;
+}
+
+.index-container{
+	display: flex;
+}
+
+#data{
+	background-color: #13293D;
+	max-width: 50%;
+	color: #FFCC6A;
+}
+
+
+#sort{
+	background-color: #FFCC6A;
+	border: none;
+	height: 25px;
+	font-family: 'Manrope', sans-serif;
+	letter-spacing: 1px;
+}
+
+
+.donations{
+	display: flex;
+	padding-top: 50px;
+}
+
+.donations h3{
+	text-align: center;
+	padding-bottom: 15px;
+	color: #FFCC6A;
+}
+
+.form1{
+	margin: 20px;
+	padding: 25px;
+	position: absolute;
+	left: 15%;
+	border-style: solid; 
+	border-width: 3px;
+	border-color: #EB8258;
+	font-family: 'Manrope', sans-serif;
+	color: #EB8258;
+}
+
+.form2{
+	margin: 20px;
+	padding: 25px;
+	position: absolute;
+	right: 15%;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #EB8258;
+	font-family: 'Manrope', sans-serif;
+	color: #EB8258;
+}
+
+input {
+	color: #13293D;
+	background-color: #FFCC6A;
+	border: none;
+	line-height: 30px;
+	border-radius: 5px;
+	font-family: 'Manrope', sans-serif;
+	font-weight: 400;
+	padding: 5px;
+}
+
+input 
 /* ---------footer design--------------- */
 footer{
 	border-top: 1px dotted #344341;
@@ -42,10 +155,10 @@ footer{
 	margin-top: 10px;
 	width: 100%;
 	max-width: 100%;
-	background-color: #e8e8e8;
 	font-size: 16px;
-	font-family: helvetica, sans-serif;
+	font-family: 'Manrope', sans-serif;
 	letter-spacing: 1px;
+	color: #EB8258;
 }
 
 footer div{
