@@ -116,19 +116,19 @@
                     <ul>                
                         <li><a href="index.html">Home</a></li>
                         <li><a class="current" href="#">Donate Masks</a></li>
-                </ul>
+                    </ul>
                 </div>
             </nav>
         </div>
     </div>
     <div class="donations" style="margin-left: 2%">
         <div class= "form1">
-        <h2> Mask Donation Form </h2>
+        <h3> Mask Donation Form </h3>
             <form method="get" id="donate_mask" action="https://comp20-final.herokuapp.com/">
-                First Name: <input type="text" name="f_name">
-                Last Name:  <input type="text" name="l_name">
+                <input type="text" name="f_name" placeholder="First Name"> 
+                <input type="text" name="l_name" placeholder="Last Name">
                 <br/> <br/>
-                Number of Masks: <input type="Number" name="masks">
+                <input type="Number" name="masks" placeholder="Number of Masks">
                 <br/><br/>
                 State: <select name="state">
     				<option value="AL">AL</option>
@@ -184,18 +184,18 @@
     				<option value="WY">WY</option>
     			</select>
                 <br/><br/>
-                Zip Code: <input type="text" name="zip">
+                <input type="text" name="zip" placeholder="Zip Code">
                 <br/><br/>
-                Phone Number: <input type="text" name="phone">
+                <input type="text" name="phone" placeholder="Phone Number">
                 <br/><br/>
-                <input type="submit" value="Make Your Donation Available" onclick="return validate()">
+                <input type="submit" value="Submit" onclick="return validate()">
                 <input type="reset" name="resetForm" value="Reset Form"></button>
             </form>
         </div>    
-        </div class="form2">
-        <h2> Search for Mask Donors Near You </h2>
+        <div class="form2">
+        <h3> Search for Mask Donors Near You </h3>
             <form method="get" action="https://comp20-match-app.herokuapp.com/"> 
-                Enter Your Zip Code: <input type="text" name="zip">
+                <input type="text" name="zip" placeholder="Your Zip Code">
                 <br/><br/>
                 <input type="submit" value="Find a Donor!" onclick="return validate2()">
                 <input type="reset" name="reset" value="Reset Form"></button>

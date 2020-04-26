@@ -68,18 +68,46 @@ nav .nav ul li a.current{
 	display: block;
 	padding: 10px;	
 	font-size: 20px;
-	color: #F05D5E;
+	color: #F05D5E; /*change color*/
 	text-align: center;
 }
 
 .donations{
 	display: flex;
-	flex-direction: row;
+
 }
 
 .form1{
-	border: 1px, ##EB8258;
+	margin: 20px;
+	padding: 25px;
+	border-style: solid; 
+	border-width: 3px;
+	border-color: #EB8258;
+	font-family: 'Manrope', sans-serif;
+	color: #EB8258;
 }
+
+.form2{
+	margin: 20px;
+	padding: 25px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #EB8258;
+	font-family: 'Manrope', sans-serif;
+	color: #EB8258;
+}
+
+input {
+	color: #13293D;
+	background-color: #FFCC6A;
+	border: none;
+	line-height: 30px;
+	border-radius: 5px;
+	font-family: 'Manrope', sans-serif;
+	font-weight: 400;
+}
+
+input 
 /* ---------footer design--------------- */
 footer{
 	border-top: 1px dotted #344341;
