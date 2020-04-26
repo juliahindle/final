@@ -192,3 +192,32 @@ footer div{
 		 background-color: #555; 
 }
 /* ------------end TOP button design------------ */
+
+
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {background-color:#ff0000;}
+
+th
+{
+	background-color: white !important;
+}
+
+th:hover
+{
+	cursor: pointer;
+}
+
+
+
+
