@@ -24,6 +24,7 @@ table {
   border-collapse: collapse;
   margin: auto;
   /*width: 100%;*/
+  color: red;
 }
 
 th, td {
@@ -66,6 +67,8 @@ th:hover
 	<meta charset="utf-8"/>
 	<script>
 
+		var history_arr = [];
+
 		function getData() 
 		{
  			request = new XMLHttpRequest();
@@ -82,7 +85,7 @@ th:hover
 					for (i = 0; i < 56; i++) 
 					{
 						if (data[i]["state"] !== "AS") {
-							text += "<tr><td><input onchange='update_chart()' type='checkbox' name='row'/></td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
+							text += "<tr><td><input onchange='update_visuals()' type='checkbox' name='row'/></td><td>" + data[i]["state"] + "</td><td>" + data[i]["positive"] + "</td><td>" + data[i]["positiveIncrease"] + "</td><td>" + data[i]["death"] + "</td><td>" + data[i]["deathIncrease"] + "</td></tr>";
 						}
 
 					}
@@ -91,68 +94,10 @@ th:hover
 
 					document.getElementById("data").innerHTML = text;
 
-					var past30Pos = new Array(55);
-					var text2 = null;
-					for (i = 0; i < 56; i++) {
-						if (data[i]["state"] !== "AS"){
-							past30Pos[i] = new Array(30);
-							text2 += data[i]["state"] + ": ";
-							var set = i;
-							for (j = 0; j < 30; j++) {
-								past30Pos[i][j] = data[set]["positive"];
-								text2 += data[set]["positive"] + ", ";
-								set = set + 56; 
-							}
-							text2 += "<br>";
-						}
-					}
-					var past30PosInc = new Array(55);
-					var text3 = null;
-					for (i = 0; i < 56; i++) {
-						if (data[i]["state"] !== "AS"){
-							past30PosInc[i] = new Array(30);
-							text3 += data[i]["state"] + ": ";
-							var set = i;
-							for (j = 0; j < 30; j++) {
-								past30PosInc[i][j] = data[set]["positiveIncrease"];
-								text3 += data[set]["positiveIncrease"] + ", ";
-								set = set + 56; 
-							}
-							text3 += "<br>";
-						}
-					}
-					var past30Death = new Array(55);
-					var text4 = null;
-					for (i = 0; i < 56; i++) {
-						if (data[i]["state"] !== "AS"){
-							past30Death[i] = new Array(30);
-							text4 += data[i]["state"] + ": ";
-							var set = i;
-							for (j = 0; j < 30; j++) {
-								past30Death[i][j] = data[set]["death"];
-								text4 += data[set]["death"] + ", ";
-								set = set + 56; 
-							}
-							text4 += "<br>";
-						}
-					}
-					var past30DeathInc = new Array(55);
-					var text5 = null;
-					for (i = 0; i < 56; i++) {
-						if (data[i]["state"] !== "AS"){
-							past30DeathInc[i] = new Array(30);
-							text5 += data[i]["state"] + ": ";
-							var set = i;
-							for (j = 0; j < 30; j++) {
-								past30DeathInc[i][j] = data[set]["deathIncrease"];
-								text5 += data[set]["deathIncrease"] + ", ";
-								set = set + 56; 
-							}
-							text5 += "<br>";
-						}
-					}
-					//document.getElementById("data").innerHTML = text2;
-
+					history_arr["Total Positive Cases"] = set_history_array("positive", data);
+					history_arr["Daily Positive Case Increase"] = set_history_array("positiveIncrease", data);
+					history_arr["Total Deaths"] = set_history_array("death", data);
+					history_arr["Daily Death Increase"] = set_history_array("deathIncrease", data);
 				}
 			}
 
@@ -160,26 +105,41 @@ th:hover
 
 			anychart.onDocumentReady(function()
 	        {
-			    var data = {
-			      	rows: []
-		           };
-
 				var chart = anychart.column();
-				chart.normal().fill("#425957");
-				
-				chart.data(data);
-
 				chart.title("Selected states below to see them here.");
-
+				chart.xAxis().title("States");
+    			chart.yAxis().title("Total Positive Cases");
 				chart.container("container");
 				chart.draw();
 
-				var chart2 = anychart.column();
-				chart2.container("container2");
-				chart2.data(data);
+				var chart2 = anychart.line();
 				chart2.title("Selected states below to see them here.");
+				chart2.xAxis().title("Time");
+    			chart2.yAxis().title("Total Positive Cases");
+    			chart2.container("container2");
 				chart2.draw();
 			});
+		}
+
+		function set_history_array(str, data)
+		{
+			var arr = new Array(55);
+			var text = null;
+			for (i = 0; i < 56; i++) {
+				if (data[i]["state"] !== "AS"){
+					arr[data[i]["state"]] = new Array(30);
+					text += data[i]["state"] + ": ";
+					var set = i;
+					for (j = 0; j < 30; j++) {
+						arr[data[i]["state"]][j] = data[set][str];
+						text += data[set][str] + ", ";
+						set = set + 56; 
+					}
+					text += "<br>";
+				}
+			}
+			// do sth with text also?
+			return arr;
 		}
 
 		function update_all_checkboxes()
@@ -195,6 +155,7 @@ th:hover
 			}
 
 			update_chart();
+			update_plot();
 		}
 		
 		var sorted_by_index = 1;
@@ -270,6 +231,91 @@ th:hover
 			}
 			
 		}
+
+		var colors = ["blue", "green", "orange", "red", "black", "purple", "brown"]
+
+		function update_visuals()
+		{
+			update_chart();
+			update_plot();
+		}
+
+		function update_chart()
+		{
+			arr = [];
+			document.getElementById("container").innerHTML = "";
+			table = document.getElementById("table");
+			rows = table.rows;
+			dropdown = document.getElementById("sort");
+
+			for (i = 1; i < rows.length; i++) 
+			{
+				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
+				{
+					state_name = rows[i].getElementsByTagName("TD")[1].innerHTML;
+					stat = parseInt(rows[i].getElementsByTagName("TD")[dropdown.selectedIndex+2].innerHTML);
+					arr.push ([state_name, stat]);
+				}
+			}
+
+	        anychart.onDocumentReady(function() 
+	        {
+			    var data = { rows: arr };
+
+				var chart = anychart.column();
+				
+				chart.data(data);
+
+				selected = dropdown.options[dropdown.selectedIndex].value;
+				chart.title(selected + " in Selected States");
+				chart.xAxis().title("States");
+    			chart.yAxis().title(selected);
+
+				chart.container("container");
+				chart.draw();
+			});
+	    }
+
+	    function update_plot()
+		{
+			arr = [];
+			document.getElementById("container2").innerHTML = "";
+			dropdown = document.getElementById("sort");
+			selected = dropdown.options[dropdown.selectedIndex].value;
+			num_checked = 0;
+
+			for (j = 0; j < history_arr[selected]["AK"].length; j++) arr.push([j]);
+
+			for (i = 1; i < rows.length; i++) 
+			{
+				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
+				{
+					state_name = rows[i].getElementsByTagName("TD")[1].innerHTML;
+					for (j = 0; j < history_arr[selected][state_name].length; j++)
+					{
+						arr[j].push([history_arr[selected][state_name][j]]);
+					}
+					num_checked++;
+				}
+			}
+
+	        anychart.onDocumentReady(function() 
+	        {
+			    var data = anychart.data.set (arr.reverse());
+
+				var chart = anychart.line();
+
+				for (i = 0; i < num_checked; i++)
+					chart.line(data.mapAs({x: 0, value: i+1})).name("AK");
+
+				chart.title(selected + " in Selected States");
+				chart.xAxis().title("Time");
+    			chart.yAxis().title(selected);
+
+				chart.container("container2");
+				chart.draw();
+			});
+	    }
 	
 
 	</script>
@@ -290,7 +336,7 @@ th:hover
 
 	<!-- <h3 style="margin-bottom: 5px">Graph: </h3> -->
 	<form style="margin-bottom:20px">
-		<select id="sort" onchange="update_chart()">
+		<select id="sort" onchange="update_visuals()">
 			<option>Total Positive Cases</option>
 			<option>Daily Positive Case Increase</option>
 			<option>Total Deaths</option>
@@ -305,62 +351,6 @@ th:hover
 	<div id="blah"></div>
 
 	<div id="data"></div>
-
-	<!-- map display
-	<iframe src="https://createaclickablemap.com/map.php?&id=90766&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe> -->
-
-	<script>
-		function update_chart()
-		{
-			arr = [];
-			document.getElementById("container").innerHTML = "";
-			table = document.getElementById("table");
-			rows = table.rows;
-			dropdown = document.getElementById("sort");
-
-			for (i = 1; i < rows.length; i++) 
-			{
-				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
-				{
-					// gets total positive cases only
-					state_name = rows[i].getElementsByTagName("TD")[1].innerHTML;
-					stat = parseInt(rows[i].getElementsByTagName("TD")[dropdown.selectedIndex+2].innerHTML);
-					arr.push ([state_name, stat]);
-				}
-			}
-
-	        anychart.onDocumentReady(function() 
-	        {
-			    // set the data
-			    var data = {
-			    	// header: ["Name", "Death toll"],
-			      	rows: arr
-		           };
-
-				// create the chart
-				var chart = anychart.column();
-				chart.normal().fill("#425957");
-				
-				// add data
-				chart.data(data);
-
-				// set the chart title
-				selected = dropdown.options[dropdown.selectedIndex].value;
-				chart.title(selected + " in Selected States");
-				chart.xAxis().title("States");
-    			chart.yAxis().title(selected);
-
-				// draw
-				chart.container("container");
-				chart.draw();
-			});
-	    }
-    </script>
-
-
-	<!-- map script
-	 <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script> -->
-
 
 
 <!------------------------- floating TOP button ----------------------------->
