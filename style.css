@@ -9,6 +9,7 @@ html{
 	padding-bottom: 40px;
 	scroll-behavior: smooth;
 	font-family: 'Manrope', sans-serif;
+	background-color: #13293D;
 }
 
 
@@ -17,8 +18,11 @@ TODO: add styling for donations page, thanks for donating page and external resu
 also, add footer style
 */
 
+.heading{
+	display: flex;
+}
 
-h1{
+header h1{
 	font-size: 300%;
 	position: relative;
 	top: 0px;
@@ -30,7 +34,52 @@ h1{
 	letter-spacing: 4px;
 }
 
+nav .nav {
+	font-family: 'Manrope', sans-serif;
+	letter-spacing: 1px;
 
+}
+
+nav .nav ul{
+	overflow: hidden;
+	list-style-type: none;
+	margin: 0;
+	padding-left: 10px;
+	width: 100%;
+	transition-duration: 0.6s;
+	z-index: 5;
+}
+
+nav .nav li{
+	display: inline-block;
+}
+
+nav .nav ul li a{
+	text-decoration: none;
+	display: block;
+	padding: 10px;	
+	font-size: 20px;
+	color: #EB8258;
+	text-align: center;
+}
+
+nav .nav ul li a.current{
+	text-decoration: none;
+	display: block;
+	padding: 10px;	
+	font-size: 20px;
+	color: #F05D5E;
+	text-align: center;
+}
+
+.donations{
+	display: flex;
+	flex-direction: row;
+}
+
+.form1{
+	border: 1px, ##EB8258;
+}
 /* ---------footer design--------------- */
 footer{
 	border-top: 1px dotted #344341;
