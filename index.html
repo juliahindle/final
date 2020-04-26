@@ -60,7 +60,7 @@ th:hover
 
 </style>
 <head>
-	<title>API Test</title>
+	<title>Live Corona Stats</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Manrope:200,400,700,800&display=swap" rel="stylesheet">
 	<meta charset="utf-8"/>
@@ -211,9 +211,25 @@ th:hover
 	
 
 	</script>
+	<script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
 </head>
 <body onload="getData()">
-	<h1>Corona Tracker</h1>
+<<<<<<< HEAD
+	<h1>COVID U.S. LIVE STATS</h1>
+=======
+	<header><h1>Corona Tracker</h1></header>
+
+<!-- 	<nav style="z-index: 100">
+		<div class="nav">
+			<ul>
+				<li><a class="current" href="#">Home</a></li>
+				<li><a href="donations.html">Donate Masks</a></li>
+
+		</ul>
+		</div>
+	</nav> -->
+
+>>>>>>> e64b966f53fd07435a13bfb685a08641362f5b39
 	<!-- <h3 style="margin-bottom: 5px">Graph: </h3> -->
 	<form style="margin-bottom:20px">
 		<select id="sort" onchange="update_chart()">
@@ -288,6 +304,38 @@ th:hover
 	 <script>if (window.addEventListener){ window.addEventListener("message", function(event) { if(event.data.length >= 22) { if( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } else if (window.attachEvent){ window.attachEvent("message", function(event) { if( event.data.length >= 22) { if ( event.data.substr(0, 22) == "__MM-LOCATION.REDIRECT") location = event.data.substr(22); } }, false); } </script> -->
 
 
+
+<!------------------------- floating TOP button ----------------------------->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<script type="text/javascript">
+	
+	btn_top = document.getElementById("myBtn");
+
+
+	window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    btn_top.style.display = "block";
+  } else {
+    btn_top.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+</script>
+<!--------------------- end of floating TOP button --------------------------->
+
+
+<footer>
+	<div>
+		&copy; Team Webalubadubdub, 2020
+	</div>
+</footer>
 
 </body>
 </html>

@@ -1,100 +1,229 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 	<meta charset="utf-8">
 	<title>Mask Donations</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Manrope:200,400,700,800&display=swap" rel="stylesheet">
 	<style type="text/css">
 	</style>
+=======
+    <meta charset="utf-8">
+    <title>Mask Donations</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Manrope:200,400,700,800&display=swap" rel="stylesheet">
+>>>>>>> e64b966f53fd07435a13bfb685a08641362f5b39
 </head>
-
+ 
 <body>
-	<script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"language="javascript"></script>
-	<script type="text/javascript">
-		function validate()
-		{
-			f_name = document.forms[0].f_name.value;
-			l_name = document.forms[0].l_name.value;
-			masks = document.forms[0].masks.value;
-			state = document.forms[0].state.value;
-			zip = document.forms[0].zip.value;
+    <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"language="javascript"></script>
+    <script type="text/javascript">
+        function validate()
+        {
+            f_name = document.forms[0].f_name.value;
+            l_name = document.forms[0].l_name.value;
+            masks = document.forms[0].masks.value;
+            state = document.forms[0].state.value;
+            zip = document.forms[0].zip.value;
+            phone = document.forms[0].phone.value;
+ 
+            with(document.forms[0])
+            {
+                if (f_name.value == "")
+                {
+                    alert("First Name is required");
+                    document.forms[0].f_name.focus();
+                    return false;
+                }
+                if (l_name.value == "")
+                {
+                    alert("Last Name is required");
+                    document.forms[0].l_name.focus();
+                    return false;
+                }
+                if (masks.value == "")
+                {
+                    alert("Number of Masks is required");
+                    document.forms[0].masks.focus();
+                    return false;
+                }
+                if (state.value == "")
+                {
+                    alert("State is required");
+                    document.forms[0].state.focus();
+                    return false;
+                }  
+                if (state.value == "")
+                {
+                    alert("State is required");
+                    document.forms[0].state.focus();
+                    return false;
+                }
+                if (state.value.length !== 2)
+                {
+                    alert("Please enter two-letter state abbreviation");
+                    document.forms[0].state.focus();
+                    return false;
+                }
+                if(phone.value == ""){
+                    alert("Must enter phone number");
+                    return false;
+                }
+                if (phone.value.length !== 10){
+                    alert("Must enter valid phone number (10 digits without special characters)");
+                    return false;
+                }
+                if (zip.value == "")
+                {
+                    alert("Zip Code is required");
+                    document.forms[0].zip.focus();
+                    return false;
+                }
+                if (zip.value.length !== 5)
+                {
+                    alert("Please enter valid Zip Code");
+                    document.forms[0].zip.focus();
+                    return false;
+                }                  
+            }
+            return true;
+        }
+ 
+        function validate2()
+        {
+            zip = document.forms[1].zip.value;
+ 
+            with(document.forms[1])
+            {
+                if (zip.value == "")
+                {
+                    alert("Zip Code is required");
+                    document.forms[1].zip.focus();
+                    return false;
+                }
+                if (zip.value.length !== 5)
+                {
+                    alert("Please enter valid Zip Code");
+                    document.forms[1].zip.focus();
+                    return false;
+                }                  
+            }
+            return true;
+        }
+ 
+    </script>
+ 
+    <div style="margin-left: 2%">
+    <h2> Mask Donation Form </h2>
+        <form method="get" id="donate_mask" action="https://comp20-final.herokuapp.com/">
+            First Name: <input type="text" name="f_name">
+            Last Name:  <input type="text" name="l_name">
+            <br/> <br/>
+            Number of Masks: <input type="Number" name="masks">
+            <br/><br/>
+            State: <select name="state">
+				<option value="AL">AL</option>
+				<option value="AK">AK</option>
+				<option value="AR">AR</option>	
+				<option value="AZ">AZ</option>
+				<option value="CA">CA</option>
+				<option value="CO">CO</option>
+				<option value="CT">CT</option>
+				<option value="DC">DC</option>
+				<option value="DE">DE</option>
+				<option value="FL">FL</option>
+				<option value="GA">GA</option>
+				<option value="HI">HI</option>
+				<option value="IA">IA</option>	
+				<option value="ID">ID</option>
+				<option value="IL">IL</option>
+				<option value="IN">IN</option>
+				<option value="KS">KS</option>
+				<option value="KY">KY</option>
+				<option value="LA">LA</option>
+				<option value="MA">MA</option>
+				<option value="MD">MD</option>
+				<option value="ME">ME</option>
+				<option value="MI">MI</option>
+				<option value="MN">MN</option>
+				<option value="MO">MO</option>	
+				<option value="MS">MS</option>
+				<option value="MT">MT</option>
+				<option value="NC">NC</option>	
+				<option value="NE">NE</option>
+				<option value="NH">NH</option>
+				<option value="NJ">NJ</option>
+				<option value="NM">NM</option>			
+				<option value="NV">NV</option>
+				<option value="NY">NY</option>
+				<option value="ND">ND</option>
+				<option value="OH">OH</option>
+				<option value="OK">OK</option>
+				<option value="OR">OR</option>
+				<option value="PA">PA</option>
+				<option value="RI">RI</option>
+				<option value="SC">SC</option>
+				<option value="SD">SD</option>
+				<option value="TN">TN</option>
+				<option value="TX">TX</option>
+				<option value="UT">UT</option>
+				<option value="VT">VT</option>
+				<option value="VA">VA</option>
+				<option value="WA">WA</option>
+				<option value="WI">WI</option>	
+				<option value="WV">WV</option>
+				<option value="WY">WY</option>
+			</select>
+            <br/><br/>
+            Zip Code: <input type="text" name="zip">
+            <br/><br/>
+            Phone Number: <input type="text" name="phone">
+            <br/><br/>
+            <input type="submit" value="Make Your Donation Available" onclick="return validate()">
+            <input type="reset" name="resetForm" value="Reset Form"></button>
+        </form>
+    <br/>
+    <h2> Search for Mask Donors Near You </h2>
+        <form method="get" action="https://comp20-match-app.herokuapp.com/"> 
+            Enter Your Zip Code: <input type="text" name="zip">
+            <br/><br/>
+            <input type="submit" value="Find a Donor!" onclick="return validate2()">
+            <input type="reset" name="reset" value="Reset Form"></button>
+        </form>
+    </div>
 
-			with(document.forms[0])
-			{
-				if (f_name.value == "")
-				{
-					alert("First Name is required");
-					document.forms[0].f_name.focus();
-					return false;
-				}
-				if (l_name.value == "")
-				{
-					alert("Last Name is required");
-					document.forms[0].l_name.focus();
-					return false;
-				}
-				if (masks.value == "")
-				{
-					alert("Number of Masks is required");
-					document.forms[0].masks.focus();
-					return false;
-				}
-				if (state.value == "")
-				{
-					alert("State is required");
-					document.forms[0].state.focus();
-					return false;
-				}	
-				if (state.value == "")
-				{
-					alert("State is required");
-					document.forms[0].state.focus();
-					return false;
-				}
-				if (state.value.length !== 2)
-				{
-					alert("Please enter two-letter state abbreviation");
-					document.forms[0].state.focus();
-					return false;
-				}
-				if (zip.value == "")
-				{
-					alert("Zip Code is required");
-					document.forms[0].zip.focus();
-					return false;
-				}
-				if (zip.value.length !== 5)
-				{
-					alert("Please enter valid Zip Code");
-					document.forms[0].zip.focus();
-					return false;
-				}					
-			}
-			alert("Information successfully recorded. Thanks for donating!");
-			return true;
-		}
 
-	</script>
-
-	<div style="margin-left: 2%">
-	<h2> Mask Donation Form </h2>
-		<form class="block_form" method="get" action="https://donations-tracker-comp20.herokuapp.com" target="formDestination">
-			First Name: <input type="text" name="f_name">
-			Last Name:  <input type="text" name="l_name">
-			<br/> <br/>
-			Number of Masks: <input type="Number" name="masks">
-			<br/><br/>
-			State: <input type="text" name="state">
-			<br/><br/>
-			Zip Code: <input type="text" name="zip">
-			<br/><br/>
-			<input type="submit" value="Make Your Donation Available" onclick="return validate()">
-			<input type="reset" name="reset" value="Reset Form"></button>
-		</form>
+<footer>
+	<div>
+		&copy; Team Webalubadubdub, 2020
 	</div>
+</footer>
 
-	<iframe name="formDestination" style="display: none;"></iframe> <!-- cheeky trick to not reload the page -->
+<!------------------------- floating TOP button ----------------------------->
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<script type="text/javascript">
+	
+	btn_top = document.getElementById("myBtn");
+
+
+	window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    btn_top.style.display = "block";
+  } else {
+    btn_top.style.display = "none";
+  }
+}
+
+
+function topFunction() {
+  document.body.scrollTop = 0; 
+  document.documentElement.scrollTop = 0; 
+}
+</script>
+<!--------------------- end of floating TOP button --------------------------->
+
 </body>
-
+ 
 </html>
