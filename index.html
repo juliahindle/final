@@ -91,6 +91,68 @@ th:hover
 
 					document.getElementById("data").innerHTML = text;
 
+					var past30Pos = new Array(55);
+					var text2;
+					for (i = 0; i < 56; i++) {
+						if (data[i]["state"] !== "AS"){
+							past30Pos[i] = new Array(30);
+							text2 += data[i]["state"] + ": ";
+							var set = i;
+							for (j = 0; j < 30; j++) {
+								past30Pos[i][j] = data[set]["positive"];
+								text2 += data[set]["positive"] + ", ";
+								set = set + 56; 
+							}
+							text2 += "<br>";
+						}
+					}
+					var past30PosInc = new Array(55);
+					var text3;
+					for (i = 0; i < 56; i++) {
+						if (data[i]["state"] !== "AS"){
+							past30PosInc[i] = new Array(30);
+							text3 += data[i]["state"] + ": ";
+							var set = i;
+							for (j = 0; j < 30; j++) {
+								past30PosInc[i][j] = data[set]["positiveIncrease"];
+								text3 += data[set]["positiveIncrease"] + ", ";
+								set = set + 56; 
+							}
+							text3 += "<br>";
+						}
+					}
+					var past30Death = new Array(55);
+					var text4;
+					for (i = 0; i < 56; i++) {
+						if (data[i]["state"] !== "AS"){
+							past30Death[i] = new Array(30);
+							text4 += data[i]["state"] + ": ";
+							var set = i;
+							for (j = 0; j < 30; j++) {
+								past30Death[i][j] = data[set]["death"];
+								text4 += data[set]["death"] + ", ";
+								set = set + 56; 
+							}
+							text4 += "<br>";
+						}
+					}
+					var past30DeathInc = new Array(55);
+					var text5;
+					for (i = 0; i < 56; i++) {
+						if (data[i]["state"] !== "AS"){
+							past30DeathInc[i] = new Array(30);
+							text5 += data[i]["state"] + ": ";
+							var set = i;
+							for (j = 0; j < 30; j++) {
+								past30DeathInc[i][j] = data[set]["deathIncrease"];
+								text5 += data[set]["deathIncrease"] + ", ";
+								set = set + 56; 
+							}
+							text5 += "<br>";
+						}
+					}
+					//document.getElementById("data").innerHTML = text2;
+
 				}
 			}
 
