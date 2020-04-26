@@ -92,7 +92,7 @@ th:hover
 					document.getElementById("data").innerHTML = text;
 
 					var past30Pos = new Array(55);
-					var text2;
+					var text2 = null;
 					for (i = 0; i < 56; i++) {
 						if (data[i]["state"] !== "AS"){
 							past30Pos[i] = new Array(30);
@@ -107,7 +107,7 @@ th:hover
 						}
 					}
 					var past30PosInc = new Array(55);
-					var text3;
+					var text3 = null;
 					for (i = 0; i < 56; i++) {
 						if (data[i]["state"] !== "AS"){
 							past30PosInc[i] = new Array(30);
@@ -122,7 +122,7 @@ th:hover
 						}
 					}
 					var past30Death = new Array(55);
-					var text4;
+					var text4 = null;
 					for (i = 0; i < 56; i++) {
 						if (data[i]["state"] !== "AS"){
 							past30Death[i] = new Array(30);
@@ -137,7 +137,7 @@ th:hover
 						}
 					}
 					var past30DeathInc = new Array(55);
-					var text5;
+					var text5 = null;
 					for (i = 0; i < 56; i++) {
 						if (data[i]["state"] !== "AS"){
 							past30DeathInc[i] = new Array(30);
