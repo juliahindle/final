@@ -68,9 +68,34 @@ nav .nav ul li a.current{
 	display: block;
 	padding: 10px;	
 	font-size: 20px;
-	color: #F05D5E; /*change color*/
+	color: #FFCC6A; /*change color*/
 	text-align: center;
 }
+
+nav .nav ul li a:hover{
+	text-decoration: none;
+	color: #FFCC6A;
+}
+
+.index-container{
+	display: flex;
+}
+
+#data{
+	background-color: #13293D;
+	max-width: 50%;
+	color: #FFCC6A;
+}
+
+
+#sort{
+	background-color: #FFCC6A;
+	border: none;
+	height: 25px;
+	font-family: 'Manrope', sans-serif;
+	letter-spacing: 1px;
+}
+
 
 .donations{
 	display: flex;
@@ -80,6 +105,7 @@ nav .nav ul li a.current{
 .donations h3{
 	text-align: center;
 	padding-bottom: 15px;
+	color: #FFCC6A;
 }
 
 .form1{

@@ -293,23 +293,27 @@ th:hover
 		</div>
 	</div>
 
-	<!-- <h3 style="margin-bottom: 5px">Graph: </h3> -->
-	<form style="margin-bottom:20px">
-		<select id="sort" onchange="update_chart()">
-			<option>Total Positive Cases</option>
-			<option>Daily Positive Case Increase</option>
-			<option>Total Deaths</option>
-			<option>Daily Death Increase</option>
-		</select>
-	</form>
+	<div class="index-container">
+		<div id="data"></div>
+		<!-- <h3 style="margin-bottom: 5px">Graph: </h3> -->
+		<div>
+			<form style="margin-bottom:20px">
+				<select id="sort" onchange="update_chart()">
+					<option>Total Positive Cases</option>
+					<option>Daily Positive Case Increase</option>
+					<option>Total Deaths</option>
+					<option>Daily Death Increase</option>
+				</select>
+			</form>
+		</div>
 
-	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
-	<div class=chart id="container"></div>
-	<div class=chart id="container2"></div>
+		<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+		<div class=chart id="container"></div>
+		<div class=chart id="container2"></div>
 
-	<div id="blah"></div>
+		<div id="blah"></div>
 
-	<div id="data"></div>
+
 
 	<!-- map display
 	<iframe src="https://createaclickablemap.com/map.php?&id=90766&maplocation=false&online=true" width="900" height="525" style="border: none;"></iframe> -->
