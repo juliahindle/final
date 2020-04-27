@@ -43,6 +43,7 @@
 					history_arr["Daily Positive Case Increase"] = set_history_array("positiveIncrease", data);
 					history_arr["Total Deaths"] = set_history_array("death", data);
 					history_arr["Daily Death Increase"] = set_history_array("deathIncrease", data);
+					history_arr["Date"] = set_history_array("date", data);
 				}
 			}
 
@@ -90,9 +91,18 @@
 					text += data[i]["state"] + ": ";
 					var set = i;
 					for (j = 0; j < 30; j++) {
-						arr[data[i]["state"]][j] = data[set][str];
-						text += data[set][str] + ", ";
-						set = set + 56; 
+						if (str == "date") {
+							date = data[set][str];
+							date = date.toString();
+							date = date.slice(date.length - 4);
+							date = parseInt(date);
+							arr[data[i]["state"]][j] = date;
+						}
+						else{
+							arr[data[i]["state"]][j] = data[set][str];
+							text += data[set][str] + ", ";
+						} 
+						set = set + 56;
 					}
 					text += "<br>";
 				}
