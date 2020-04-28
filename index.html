@@ -94,8 +94,9 @@
 						if (str == "date") {
 							date = data[set][str];
 							date = date.toString();
-							date = date.slice(date.length - 4);
-							date = parseInt(date);
+							month = parseInt(date.slice(4, 6));
+							day = parseInt(date.slice(6, 8));
+							date = month + "/" + day;
 							arr[data[i]["state"]][j] = date;
 						}
 						else{
@@ -248,20 +249,16 @@
 				y.enabled(true);
 				y.useHtml(true);
 				y.text("<a style='color:#EB8258'>" + selected + "</a>");
+				// var z = chart.title();
+				// z.enabled(true);
+				// z.useHtml(true);
+				// z.text("<a style='color:#EB8258'>Today</a>");
     			chart.background().fill(null);
 
 				chart.container("container");
 				chart.draw();
 			});
 	    }
-
-	    var stand_in_dates = ["3/28", "3/29", "3/30", "3/31", "4/1", 
-	    				      "4/2", "4/3", "4/4", "4/5", "4/6", 
-	    				      "4/7", "4/8", "4/9", "4/10", "4/11",
-	    				      "4/12", "4/13", "4/14", "4/15", "4/16",
-	    				      "4/17", "4/18", "4/19", "4/20", "4/21",
-	    				      "4/22", "4/23", "4/24", "4/25", "4/26"];
-	    stand_in_dates = stand_in_dates.reverse();
 
 	    function update_plot()
 		{
@@ -272,7 +269,7 @@
 			selected = dropdown.options[dropdown.selectedIndex].value;
 			num_checked = 0;
 
-			for (j = 0; j < history_arr[selected]["AK"].length; j++) arr.push([stand_in_dates[j]]);
+			for (j = 0; j < history_arr[selected]["AK"].length; j++) arr.push([history_arr["Date"]["AK"][j]]);
 
 			for (i = 1; i < rows.length; i++) 
 			{
