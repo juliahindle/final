@@ -28,6 +28,24 @@
         border-radius: 5px;
     }
 
+    header{
+        height: 100px;
+        border-style: solid;
+        border-width: 3px;
+        border-color: red;
+        display: flex;
+    }
+
+    header .title_left{
+        float: left;
+        width: 75%;
+    }
+
+    header .nav_right{
+        float: right;
+        width: 25%
+    }
+
 </style>
 <head>
 	<title>COVID-19 Live Statistics</title>
@@ -69,6 +87,22 @@
 
 </script>
 <body>
+
+     
+            <header>
+                <div class="title_left">
+                    <h1>COVID-19 U.S. LIVE STATS</h1>
+                </div>
+                <div class="nav_right">
+                     <ul>                
+                        <li><a class="current" href="#">Home</a></li>
+                        <li><a href="donations.html">Donate Masks</a></li>
+                    </ul>
+                </div>
+
+            </header>
+        
+
 	<select name="Select A State" id="search_state">
     				<option value="AL">Alabama</option>
     				<option value="AK">Alaska</option>
