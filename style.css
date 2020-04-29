@@ -231,12 +231,12 @@ header .nav_right ul li a:hover{
 }
 
 .form1 input {
-	color: white;
+	color: #13293D;
 	background-color: #FFCC6A;
 	border: none;
 	line-height: 30px;
 	height: 50px;
-
+	width: 150px;
 	border-radius: 5px;
 	font-family: 'Manrope', sans-serif;
 	font-weight: 400;
