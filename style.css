@@ -81,6 +81,35 @@ nav .nav ul li a:hover{
 	display: flex;
 }
 
+
+.container_search{
+	display: flex;
+    font-family: 'Manrope', sans-serif;
+    background-color: #FFCC6A;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #EB8258;
+    border-radius: 5px;
+    max-width: 70%;
+}
+
+.container_search div tr td{
+    padding: 20px;
+    margin: auto;
+}
+
+#search_state{
+    line-height: 20px;
+    background-color: #FFCC6A;
+    font-family: 'Manrope', sans-serif;
+    width: 70%;
+    height: 70px;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #EB8258;
+ 	border-radius: 5px;
+}
+
 #data{
 	background-color: #13293D;
 	max-width: 50%;
