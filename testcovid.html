@@ -1,6 +1,32 @@
 <!doctype html>
 <html>
 <style type="text/css">
+    .container_search{
+        display: flex;
+        font-family: 'avenir', sans-serif;
+        background-color: #FFCC6A;
+        border-style: solid;
+        border-width: 10px;
+        border-color: #EB8258;
+        border-radius: 5px;
+        max-width: 70%;
+    }
+    .container_search div tr td{
+        padding: 20px;
+        margin: auto;
+    }
+
+    #search_state{
+        line-height: 20px;
+        background-color: #FFCC6A;
+        font-family: 'avenir', sans-serif;
+        width: 70%;
+        height: 70px;
+        border-style: solid;
+        border-width: 10px;
+        border-color: #EB8258;
+        border-radius: 5px;
+    }
 
 </style>
 <head>
@@ -25,10 +51,12 @@
 					for (i = 0; i < data.length; i++) 
 					{
 						if (data[i]["state"] == chosenState) {
+                            document.getElementById("state_placeholder").innerHTML = data[i]["state"];
 							document.getElementById("total_P_placeholder").innerHTML = data[i]["positive"];
 							document.getElementById("total_D_placeholder").innerHTML = data[i]["death"];
 							document.getElementById("daily_P_placeholder").innerHTML = data[i]["positiveIncrease"];
 							document.getElementById("daily_D_placeholder").innerHTML = data[i]["deathIncrease"];
+                            break;
 						}
 
 					}
@@ -41,7 +69,7 @@
 
 </script>
 <body>
-	<select id="search_state">
+	<select name="Select A State" id="search_state">
     				<option value="AL">Alabama</option>
     				<option value="AK">Alaska</option>
     				<option value="AR">Arkansas</option>	
@@ -97,17 +125,21 @@
     <button onclick="searchData()"> Go</button>
 
     <div class="container_search">
-    	<h3 id="state_placeholder">state placeholder</h3>
-    	<table  class="indiv_search_table">
-    		<tr>
-		    	<td><h4>Total Positive: </h4><h3 id="total_P_placeholder"></h3></td>
-		    	<td><h4>Daily Positive Increase: </h4><h3 id="daily_P_placeholder"></h3></td>
-    		</tr>
-    		<tr>
-		    	<td><h4>Total Deaths: </h4><h3 id="total_D_placeholder"></h3></td>
-		    	<td><h4>Daily Death Increase: </h4><h3 id="daily_D_placeholder"></h3></td>
-		    </tr>
-    	</table>
+        <div>
+    	   <h3 id="state_placeholder"></h3>
+        </div>
+        <div>
+        	<table  class="indiv_search_table">
+        		<tr>
+    		    	<td><h4>Total Positive: </h4></td><td><h3 id="total_P_placeholder"></h3></td>
+    		    	<td><h4>Daily Positive Increase: </h4></td><td><h3 id="daily_P_placeholder"></h3></td>
+        		</tr>
+        		<tr>
+    		    	<td><h4>Total Deaths: </h4></td><td><h3 id="total_D_placeholder"></h3></td>
+    		    	<td><h4>Daily Death Increase: </h4></td><td><h3 id="daily_D_placeholder"></h3></td>
+    		    </tr>
+        	</table>
+        </div>
     </div>
 </body>
 </html>
