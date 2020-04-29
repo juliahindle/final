@@ -27,7 +27,7 @@ header{
 }
 
 header .title_left{
-	font-size: 140%;
+	font-size: 20px;
 	float: left;
 	width: 75%;
 	text-align: left; 
@@ -35,9 +35,12 @@ header .title_left{
 	font-weight: 800;
 	letter-spacing: 4px;
 	margin-top: 20px;
-	padding: none;
+	padding-left: 10px;
+	padding-top: 0px;
 	position: relative;
     bottom: 0px;
+    line-height: 5px;
+
 }
 
 header .nav_right{
@@ -49,6 +52,7 @@ header .nav_right{
     margin-top: 20px;
     position: relative;
     bottom: 0px;
+    line-height: 5px;
 }
 
 header .nav_right a {
@@ -62,7 +66,6 @@ header .nav_right li{
 
 header .nav_right ul{
 	list-style-type: none;
-	margin: 0;
 	padding-left: 10px;
 	width: 100%;
 }
@@ -72,15 +75,12 @@ header .nav_right ul li a{
 	text-decoration: none;
 	display: block;
 	padding: 10px;	
-	font-size: 20px;
 	color: #EB8258;
 }
 
 header .nav_right ul li a.current{
 	text-decoration: none;
 	display: block;
-	padding: 10px;	
-	font-size: 20px;
 	color: #FFCC6A;
 }
 
@@ -146,14 +146,17 @@ header .nav_right ul li a:hover{
 }
 
 .search_left{
-	margin-right: 20px;
+	margin-left: 10px;
 	padding: 30px;
 	float: left;
+	font-size: 150%;
+	width: 25%;
 }
 
 .search_right{
 	float: right;
-	padding-left: 50px;
+	padding-left: 10px;
+	width: 75%;
 }
 
 
@@ -162,6 +165,11 @@ header .nav_right ul li a:hover{
     margin: auto;
     font-family: 'Manrope', sans-serif;
     font-weight: 200;
+    border: none;
+}
+
+.container_search tr:hover{
+	background-color: #FFCC6A !important;
 }
 
 
@@ -292,7 +300,7 @@ footer div{
 	  border: none; 
 	  outline: none;
 	  background-color: #FFCC6A;
-	  color: #FFFFFF; 
+	  color: #13293D; 
 	  cursor: pointer; 
 	  padding: 15px;
 	  border-radius: 10px;
@@ -317,11 +325,12 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
-tr:hover {background-color:#ff0000;}
+tr:hover {background-color:#1282A2;}
 
 th
 {
-	background-color: white !important;
+	background-color: #13293D !important;
+	color: #EB8258;
 }
 
 th:hover
