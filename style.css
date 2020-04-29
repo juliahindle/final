@@ -236,11 +236,11 @@ header .nav_right ul li a:hover{
 	border: none;
 	line-height: 30px;
 	height: 50px;
-	width: 150px;
+
 	border-radius: 5px;
 	font-family: 'Manrope', sans-serif;
 	font-weight: 400;
-	padding: 5px;
+	padding: 15px;
 }
 
 .form2 input {
@@ -251,7 +251,7 @@ header .nav_right ul li a:hover{
 	border-radius: 5px;
 	font-family: 'Manrope', sans-serif;
 	font-weight: 400;
-	padding: 5px;
+	padding: 15px;
 }
 
 
