@@ -18,97 +18,152 @@ TODO: add styling for donations page, thanks for donating page and external resu
 also, add footer style
 */
 
-.heading{
-	display: flex;
+/* ------------start header/nav design------------ */
+header{
+	height: 100px;
+    display: flex;
+	margin: 5px;
+	font-family: 'Manrope', sans-serif;
 }
 
-header{
-	font-size: 150%;
-	margin: 5px;
+header .title_left{
+	font-size: 140%;
+	float: left;
+	width: 75%;
 	text-align: left; 
 	color: #EB8258; 
-	font-family: 'Manrope', sans-serif;
 	font-weight: 800;
 	letter-spacing: 4px;
-	border-color: #EB8258; 
-	border-width: 3px;
+	margin-top: 20px;
+	padding: none;
+	position: relative;
+    bottom: 0px;
 }
 
-nav .nav {
-	font-family: 'Manrope', sans-serif;
-	letter-spacing: 1px;
-
+header .nav_right{
+	float: right;
+    width: 25%;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding-right: 10px;
+    margin-top: 20px;
+    position: relative;
+    bottom: 0px;
 }
 
-nav .nav ul{
-	overflow: hidden;
+header .nav_right a {
+    text-decoration: none;
+}
+
+header .nav_right li{
+    display: inline-block;
+}
+
+
+header .nav_right ul{
 	list-style-type: none;
 	margin: 0;
 	padding-left: 10px;
 	width: 100%;
-	transition-duration: 0.6s;
-	z-index: 5;
 }
 
-nav .nav li{
-	display: inline-block;
-}
 
-nav .nav ul li a{
+header .nav_right ul li a{
 	text-decoration: none;
 	display: block;
 	padding: 10px;	
 	font-size: 20px;
 	color: #EB8258;
-	text-align: center;
 }
 
-nav .nav ul li a.current{
+header .nav_right ul li a.current{
 	text-decoration: none;
 	display: block;
 	padding: 10px;	
 	font-size: 20px;
-	color: #FFCC6A; /*change color*/
-	text-align: center;
+	color: #FFCC6A;
 }
 
-nav .nav ul li a:hover{
+header .nav_right ul li a:hover{
 	text-decoration: none;
 	color: #FFCC6A;
 }
+
+/* ------------end header/nav design------------ */
 
 .index-container{
 	display: flex;
 }
 
-
-.container_search{
-	display: flex;
-    font-family: 'Manrope', sans-serif;
-    background-color: #FFCC6A;
-    border-style: solid;
-    border-width: 10px;
-    border-color: #EB8258;
-    border-radius: 5px;
-    max-width: 70%;
-}
-
-.container_search div tr td{
-    padding: 20px;
-    margin: auto;
-}
-
+/* ------------start first part of homepage design, individual state search------------ */
+/* ----This is for the select option------ */
 #search_state{
     line-height: 20px;
     background-color: #FFCC6A;
     font-family: 'Manrope', sans-serif;
+    font-weight: 200;
+    font-size: 150%;
     width: 70%;
     height: 70px;
     border-style: solid;
     border-width: 10px;
     border-color: #EB8258;
  	border-radius: 5px;
+ 	padding: 20px;
+ 	margin-top: 100px;
+ 	margin-bottom: 50px;
+ 	margin-left: 15%;
 }
+
+.go_btn{
+	line-height: 20px;
+    background-color: #FFCC6A;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    font-size: 150%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #EB8258;
+ 	border-radius: 5px;
+ 	margin-left: 0px;
+	}
+
+/* ----This is for the div that displays the data on an individual state------ */
+.container_search{
+	display: flex;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 200;
+    background-color: #FFCC6A;
+    border-style: solid;
+    border-width: 10px;
+    border-color: #EB8258;
+    border-radius: 5px;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-bottom: 50px;
+}
+
+.search_left{
+	margin-right: 20px;
+	padding: 30px;
+	float: left;
+}
+
+.search_right{
+	float: right;
+	text-align: center;
+}
+
+
+.container_search div tr td{
+    padding: 20px;
+    margin: auto;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 200;
+}
+
+
+/* ------------end of first part of homepage design, individual state search feature------------ */
 
 #data{
 	background-color: #13293D;
@@ -128,7 +183,10 @@ nav .nav ul li a:hover{
 
 .donations{
 	display: flex;
-	padding-top: 50px;
+	padding-top: 50px; 
+	margin: 10px;
+	height: 600px;
+	flex-direction: column;
 }
 
 .donations h3{
@@ -138,30 +196,52 @@ nav .nav ul li a:hover{
 }
 
 .form1{
+	font-family: 'Manrope', sans-serif;
+	color: #EB8258;
+	display: inline-block;
 	margin: 20px;
 	padding: 25px;
 	position: absolute;
-	left: 15%;
+	width: 50%;
+	left: 40px;
 	border-style: solid; 
 	border-width: 3px;
 	border-color: #EB8258;
-	font-family: 'Manrope', sans-serif;
-	color: #EB8258;
+
+}
+
+.form1 .donation_state{
+	background-color: #FFCC6A;
 }
 
 .form2{
+	font-family: 'Manrope', sans-serif;
+	color: #EB8258;
+	display: inline-block;
 	margin: 20px;
 	padding: 25px;
 	position: absolute;
-	right: 15%;
+	width: 30%;
+	right: 40px;
 	border-style: solid;
 	border-width: 3px;
 	border-color: #EB8258;
-	font-family: 'Manrope', sans-serif;
-	color: #EB8258;
 }
 
-input {
+.form1 input {
+	color: #13293D;
+	background-color: #FFCC6A;
+	border: none;
+	line-height: 30px;
+	height: 50px;
+	width: 150px;
+	border-radius: 5px;
+	font-family: 'Manrope', sans-serif;
+	font-weight: 400;
+	padding: 5px;
+}
+
+.form2 input {
 	color: #13293D;
 	background-color: #FFCC6A;
 	border: none;
@@ -172,7 +252,7 @@ input {
 	padding: 5px;
 }
 
-input 
+
 /* ---------footer design--------------- */
 footer{
 	border-top: 1px dotted #344341;

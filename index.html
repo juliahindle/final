@@ -314,20 +314,18 @@
 	<script   src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
 </head>
 <body onload="getData()">
-	<div class="heading">
-        <div>
-            <header><h1>COVID-19 U.S. LIVE STATS</h1></header>
-        </div>  
-            
-            <div class="nav">
-                <nav style="z-index: 100">
-                    <ul>                
-                    	<li><a class="current" href="#">Home</a></li>
-						<li><a href="donations.html">Donate Masks</a></li>
+
+            <header>
+                <div class="title_left">
+                    <h1>COVID-19 U.S. LIVE STATS</h1>
+                </div>
+                <div class="nav_right">
+                     <ul>                
+                        <li><a class="current" href="#">Home</a></li>
+                        <li><a href="donations.html">Donate Masks</a></li>
                     </ul>
-           		</nav>
-        	</div>
-    </div>
+                </div>
+            </header>
 
 
 	<script type="text/javascript">
@@ -417,13 +415,13 @@
     				<option value="WV">West Virginia</option>
     				<option value="WY">Wyoming</option>
     			</select>
-    <button onclick="searchData()"> Go</button>
+    <button class="go_btn" onclick="searchData()"> Go</button>
 
     <div class="container_search">
-        <div>
+        <div class="search_left">
     	   <h3 id="state_placeholder"></h3>
         </div>
-        <div>
+        <div class="search_right">
         	<table  class="indiv_search_table">
         		<tr>
     		    	<td><h4>Total Positive: </h4></td><td><h3 id="total_P_placeholder"></h3></td>
@@ -436,6 +434,9 @@
         	</table>
         </div>
     </div>
+
+    <h3 style="color: #EB8258; text-align: center; padding-bottom: 150px;">COMPARE STATES BELOW</h3>
+
 
 <!------------------------- start of second part of homepage, the state comparison charts----------------------------->
 

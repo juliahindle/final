@@ -9,22 +9,18 @@
 </head>
  
 <body>
-    <div class="heading">
-        <div>
-            <header><h1>COVID-19 U.S. LIVE STATS</h1></header>
-        </div>    
-            
-                <div class="nav">
-                    <nav style="z-index: 100">
-                    <ul>                
-                        <li><a href="index.html">Home</a></li>
-                        <li><a class="current" href="#">Donate Masks</a></li>
-                    </ul>
-                
-            </nav>
+    <header>
+        <div class="title_left">
+            <h1>COVID-19 U.S. LIVE STATS</h1>
         </div>
+        <div class="nav_right">
+            <ul>
+                <li><a href="index.html">Home</a></li>                
+                <li><a class="current" href="#">Donate Masks</a></li>
+            </ul>
+        </div>
+    </header>
    
-    </div>
 
 	<!-- <div class="g-recaptcha" data-sitekey="6LddW-4UAAAAAItzaDPtrHSsb_5D5TBX72pqieIj"></div> -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"language="javascript"></script>
@@ -133,7 +129,7 @@
                 <br/> <br/>
                 <input type="Number" name="masks" placeholder="Number of Masks">
                 <br/><br/>
-                State: <select name="state">
+                State: <select class="donation_state" name="state">
     				<option value="AL">AL</option>
     				<option value="AK">AK</option>
     				<option value="AR">AR</option>	
