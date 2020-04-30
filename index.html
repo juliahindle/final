@@ -26,7 +26,7 @@
 					result = request.responseText;
 					data = JSON.parse(result);
 
-					text = "<table id='table'><tr><th><input onchange='update_all_checkboxes()' type='checkbox' name='row'/></th><th onClick='sortBy(1)'>&#9660; State</th><th onClick='sortBy(2)'>&#9661; Total Positive Cases</th><th onClick='sortBy(3)'>&#9661; Daily Positive Increase</th><th onClick='sortBy(4)'>&#9661; Total Deaths</th><th onClick='sortBy(5)'>&#9661; Daily Death Increase</th></tr>";
+					text = "<table id='table'><tr><th class='filters'></th><th class='filters' onClick='sortBy(1)'>&#9660;</th><th class='filters' onClick='sortBy(2)'>&#9661;</th><th class='filters' onClick='sortBy(3)'>&#9661;</th><th class='filters' onClick='sortBy(4)'>&#9661;</th><th class='filters' onClick='sortBy(5)'>&#9661;</th></tr><tr><th><input onchange='update_all_checkboxes()' type='checkbox' name='row'/></th><th>State</th><th>Total Positive Cases</th><th>Daily Positive Increase</th><th>Total Deaths</th><th>Daily Death Increase</th></tr>";
 
 					for (i = 0; i < 56; i++) 
 					{
@@ -118,9 +118,9 @@
 			table = document.getElementById("table");
 			rows = table.rows;
 
-			value = rows[0].getElementsByTagName("TH")[0].getElementsByTagName("input")[0].checked;
+			value = rows[1].getElementsByTagName("TH")[0].getElementsByTagName("input")[0].checked;
 			
-			for (i = 1; i < rows.length; i++) 
+			for (i = 2; i < rows.length; i++) 
 			{
 				rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked = value;
 			}
@@ -149,7 +149,7 @@
 				switching = false;
 				rows = table.rows;
 
-				for (i = 1; i < (rows.length - 1); i++) 
+				for (i = 2; i < (rows.length - 1); i++) 
 				{
 					shouldSwitch = false;
 
@@ -217,7 +217,7 @@
 			rows = table.rows;
 			dropdown = document.getElementById("sort");
 
-			for (i = 1; i < rows.length; i++) 
+			for (i = 2; i < rows.length; i++) 
 			{
 				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
 				{
@@ -272,7 +272,7 @@
 
 			for (j = 0; j < history_arr[selected]["AK"].length; j++) arr.push([history_arr["Date"]["AK"][j]]);
 
-			for (i = 1; i < rows.length; i++) 
+			for (i = 2; i < rows.length; i++) 
 			{
 				if (rows[i].getElementsByTagName("TD")[0].getElementsByTagName("input")[0].checked)
 				{

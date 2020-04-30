@@ -11,7 +11,7 @@
 {
 	width: 46%;
 	max-width: 600px;
-	min-width: 500px;
+	min-width: 540px;
 	height: 600px;
 	display: inline-block;
 }
@@ -24,7 +24,7 @@
 }
 
 #box1 { overflow-y: scroll; }
-#box2 { overflow-y: hidden; padding: 20px;}
+#box2 { overflow-y: hidden; overflow-x: hidden; padding: 20px;}
 
 #main
 {
@@ -39,4 +39,11 @@
 .headOfBox
 {
 	color: #EB8258;
+}
+
+.filters
+{
+	text-align: center !important;
+	border-bottom: none !important;
+	padding-bottom: 0 !important;
 }
