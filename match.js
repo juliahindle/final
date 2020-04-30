@@ -75,7 +75,7 @@ async function main()
 		var lat_array = new Array(my_data.length);
 		var lng_array = new Array(lat_array.length);
 		
-		// storing all the coordinates in arrays
+		// storing all the coordinates in respective arrays
 		for (i = 0; i < my_data.length; i++) {
 			zipcode = my_data[i].zip;
 			if (zipcodes.lookup(zipcode) != null) {
