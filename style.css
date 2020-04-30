@@ -338,32 +338,45 @@ footer div{
 /* ------------end TOP button design------------ */
 
 
-
-table {
+/* ------------ donation post-form pages ------------ */
+#table {
   border-collapse: collapse;
   margin: auto;
   font-family: 'Avenir', sans-serif;
 }
 
-th, td {
+#table th, td {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-tr:hover {background-color:#1282A2;}
+#table tr:hover {background-color:#1282A2;}
 
-th
+#table th
 {
 	background-color: #13293D !important;
 	color: #EB8258;
 }
 
-th:hover
+#table th:hover
 {
 	cursor: pointer;
 }
 
+/* ------------ donation post-form pages ------------ */
+.findMask{
+	font-family: 'Avenir', sans-serif;
+	text-align: center;
+	color: #13293D;
+}
+
+.goBack{
+	font-family: 'Avenir', sans-serif;
+	text-align: center;
+	color: #13293D;
+	display: inline-block;
+}
 
 @media(max-width: 900px){
 
