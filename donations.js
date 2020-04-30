@@ -39,7 +39,7 @@ async function main()
 			});
 	}
 	var html1 = '<html><head><title>Thank You!</title><link rel="stylesheet" type="text/css" href="https://juliahindle.github.io/final/style.css" /></head>';
-	var html2 = '<body> <header><div class="title_left"><h1>COVID-19 U.S. LIVE STATS</h1></div><div class="nav_right"><ul><li><a href="index.html">Home</a></li><li><a href="donations.html">Donate Masks</a></li></ul></div></header><h1> Thank you for donating! </h1><br /> <br />To go back to the form, click <a href="https://juliahindle.github.io/final/donations.html">here</a>. <br />If you want to go back to the home page instead, click <a href="https://juliahindle.github.io/final/">here</a>.<footer><div>&copy; Team Webalubadubdub, 2020</div></footer>';
+	var html2 = '<body> <header><div class="title_left"><h1>COVID-19 U.S. LIVE STATS</h1></div><div class="nav_right"><ul><li><a href="https://juliahindle.github.io/final/index.html">Home</a></li><li><a href="https://juliahindle.github.io/final/donations.html">Donate Masks</a></li></ul></div></header><h1> Thank you for donating! </h1><br /> <br />To go back to the form, click <a href="https://juliahindle.github.io/final/donations.html">here</a>. <br />If you want to go back to the home page instead, click <a href="https://juliahindle.github.io/final/">here</a>.<footer><div>&copy; Team Webalubadubdub, 2020</div></footer>';
 	res.write(html1 + html2);
 	res.end('</body></html>');
 	}

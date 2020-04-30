@@ -94,7 +94,7 @@ async function main()
 			}	
 		}
 
-		res.write('<body><header><div class="title_left"><h1>COVID-19 U.S. LIVE STATS</h1></div><div class="nav_right"><ul><li><a href="index.html">Home</a></li><li><a href="donations.html">Donate Masks</a></li></ul></div></header><h1>Find Masks Near Your Location</h1>\n');
+		res.write('<body><header><div class="title_left"><h1>COVID-19 U.S. LIVE STATS</h1></div><div class="nav_right"><ul><li><a href="https://juliahindle.github.io/final/index.html">Home</a></li><li><a href="https://juliahindle.github.io/final/donations.html">Donate Masks</a></li></ul></div></header><h1>Find Masks Near Your Location</h1>\n');
 		res.write("<div class='result'> The person closest to your location is " + my_data[donation_index].f_name + " " + my_data[donation_index].l_name + ".\n");
 		res.write("<br /> They have " + my_data[donation_index].mask_num + " masks available. You can reach them at their phone number, " + my_data[donation_index].phone + ".</div>\n");
 		res.write("You can view the approximate location of the donor below: <br /> <br /> <br /><div class='map' id='map' style='height:450px'></div>");
