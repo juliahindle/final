@@ -8,7 +8,7 @@ html{
 	min-height: 100%; /*required for footer*/
 	padding-bottom: 40px;
 	scroll-behavior: smooth;
-	font-family: 'Manrope', sans-serif;
+	font-family: 'Avenir', sans-serif;
 	background-color: #13293D;
 }
 
@@ -24,7 +24,8 @@ header{
     display: flex;
     flex-wrap: wrap;
 	margin: 5px;
-	font-family: 'avenir', sans-serif;
+	font-family: 'Avenir', sans-serif;
+
 }
 
 header .title_left{
@@ -40,7 +41,6 @@ header .title_left{
 	padding-top: 0px;
 	flex: 70%;
     line-height: 5px;
-    font-family: 'avenir', sans-serif;
     display: inline;
 
 }
@@ -104,8 +104,7 @@ header .nav_right ul li a:hover{
 #search_state{
     line-height: 20px;
     background-color: #FFCC6A;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 200;
+    font-family: 'Avenir', sans-serif;
     font-size: 150%;
     width: 60%;
     height: 70px;
@@ -123,8 +122,8 @@ header .nav_right ul li a:hover{
 .go_btn{
 	line-height: 20px;
     background-color: #FFCC6A;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
+    font-family: 'Avenir', sans-serif;
+    font-weight: bold;
     font-size: 150%;
     width: 10%;
     height: 70px;
@@ -144,8 +143,7 @@ header .nav_right ul li a:hover{
 /* ----This is for the div that displays the data on an individual state------ */
 .container_search{
 	display: flex;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 200;
+    font-family: 'Avenir', sans-serif;
     background-color: #FFCC6A;
     border-style: solid;
     border-width: 10px;
@@ -168,16 +166,14 @@ header .nav_right ul li a:hover{
 	float: right;
 	padding-left: 10px;
 	width: 75%;
-	font-family: 'Manrope', sans-serif;
-    font-weight: 200;
+	font-family: 'Avenir', sans-serif;
 }
 
 
 .container_search div tr td{
     padding: 20px;
     margin: auto;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 200;
+    font-family: 'Avenir', sans-serif;
     border: none;
 }
 
@@ -199,7 +195,7 @@ header .nav_right ul li a:hover{
 	background-color: #FFCC6A;
 	border: none;
 	height: 25px;
-	font-family: 'Manrope', sans-serif;
+	font-family: 'Avenir', sans-serif;
 	letter-spacing: 1px;	
 }
 
@@ -220,7 +216,7 @@ header .nav_right ul li a:hover{
 }
 
 .form1{
-	font-family: 'Manrope', sans-serif;
+	font-family: 'Avenir', sans-serif;
 	color: #EB8258;
 	display: inline-block;
 	margin: 20px;
@@ -243,7 +239,7 @@ header .nav_right ul li a:hover{
 }
 
 .form2{
-	font-family: 'Manrope', sans-serif;
+	font-family: 'Avenir', sans-serif;
 	color: #EB8258;
 	display: inline-block;
 	margin: 20px;
@@ -266,8 +262,7 @@ header .nav_right ul li a:hover{
 	height: 50px;
 	width: 150px;
 	border-radius: 5px;
-	font-family: 'Manrope', sans-serif;
-	font-weight: 400;
+	font-family: 'Avenir', sans-serif;
 	padding: 15px;
 }
 
@@ -279,8 +274,7 @@ header .nav_right ul li a:hover{
 	height: 50px;
 	width: 150px;
 	border-radius: 5px;
-	font-family: 'Manrope', sans-serif;
-	font-weight: 400;
+	font-family: 'Avenir', sans-serif;
 	padding: 15px;
 }
 
@@ -305,7 +299,7 @@ footer{
 	width: 100%;
 	max-width: 100%;
 	font-size: 16px;
-	font-family: 'Manrope', sans-serif;
+	font-family: 'Avenir', sans-serif;
 	letter-spacing: 1px;
 	color: #EB8258;
 }
@@ -335,6 +329,7 @@ footer div{
 	  padding: 15px;
 	  border-radius: 10px;
 	  font-size: 18px;
+	  font-family: 'Avenir', sans-serif;
 }
 
 #myBtn:hover {
@@ -347,6 +342,7 @@ footer div{
 table {
   border-collapse: collapse;
   margin: auto;
+  font-family: 'Avenir', sans-serif;
 }
 
 th, td {
