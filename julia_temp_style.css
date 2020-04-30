@@ -54,7 +54,7 @@
 	cursor: pointer;
 }
 
-input, td:hover
+input, #table td:hover
 {
 	cursor: pointer;
 }
