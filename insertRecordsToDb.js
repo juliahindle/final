@@ -1,7 +1,7 @@
-// readAndInsert.js
+// insertRecordsToDb
 /*
-A file that reads in a comma delimited file named "companies.csv" and inserts the 
-company name along with their ticker to a mongodb database.
+A file that reads in a comma delimited file and inserts the 
+records to mongodb.
 */
 
 var readline = require('readline');
