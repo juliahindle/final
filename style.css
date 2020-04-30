@@ -159,7 +159,7 @@ header .nav_right ul li a:hover{
 
 .container_search div tr td{
     padding: 20px;
-    margin: 25%;
+    margin: auto;
     font-family: 'Avenir', sans-serif;
     border: none;
 }
