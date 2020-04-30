@@ -88,9 +88,7 @@ header .nav_right ul li a:hover{
 
 /* ------------end header/nav design------------ */
 
-.index-container{
-	display: flex;
-}
+
 
 /* ------------START first part of homepage design, individual state search------------ */
 /* ----This is for the select option------ */
@@ -153,21 +151,24 @@ header .nav_right ul li a:hover{
     border-radius: 5px;
     max-width: 70%;
     margin-left: 15%;
-    margin-bottom: 50px;
-	padding: auto;
-
+    margin-bottom: 100px;
+	padding: 0% 10% 0% 15%;
 	font-family: 'Avenir', sans-serif;
 	text-align: center;
 }
 
 .indiv_search_table{
-	padding: auto;
-	border-bottom: : none;
+	padding: 0px;
+	border: none;
 }
-.container_search div tr td{
-    margin: auto;
+.container_search .indiv_search_table tr td{
+    margin: 50px;
     font-family: 'Avenir', sans-serif;
-    border-bottom: none;
+    border: none;
+}
+
+.container_search .indiv_search_table td{
+	width: 200px;
 }
 
 #compare_link:hover{
@@ -371,7 +372,8 @@ footer div{
 	header .title_left{
 		font-size: 13px;
 		margin-bottom: 0px;
-		width: 100%
+		width: 100%;
+		text-align: center;
 	}
 
 	header .nav_right{
@@ -392,23 +394,23 @@ footer div{
 	}
 
 	.go_btn{
-		width: auto;
+		width: 10%;
 		font-size: 75%;
 	}
 
 	.container_search{
-		width: auto;
-	}
-
-	.container_search{
-		padding: auto;
+		padding: 0px 5px;
 		font-size: 75%;
 		width: auto;
 	}
 
-	.container_search div tr td{
-    padding: auto;
-    margin: auto;
+	.container_search .indiv_search_table tr td{
+    	padding: auto;
+    	margin: auto;
+	}
+
+	.indiv_search_table{
+		padding-left: 10px;
 	}
 
 	.donations{
