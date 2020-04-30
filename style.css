@@ -162,12 +162,12 @@ header .nav_right ul li a:hover{
 
 .indiv_search_table{
 	padding: auto;
-	border: none;
+	border-bottom: : none;
 }
 .container_search div tr td{
     margin: auto;
     font-family: 'Avenir', sans-serif;
-    border: none;
+    border-bottom: none;
 }
 
 #compare_link:hover{
@@ -193,11 +193,11 @@ header .nav_right ul li a:hover{
 
 .donations{
 	display: flex;
-
 	padding-top: 50px; 
 	margin: 10px;
 	height: 600px;
 	margin-bottom: 50px;
+	width: auto;
 }
 
 .donations h3{
