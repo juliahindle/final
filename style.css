@@ -48,7 +48,8 @@ header .nav_right{
     line-height: 5px;
     text-align: right;
     display: inline;
-    font-size: 15px;
+    font-size: 16px;
+    padding-top: 10px;
 }
 
 header .nav_right a {
@@ -192,7 +193,7 @@ header .nav_right ul li a:hover{
 
 .donations{
 	display: flex;
-	flex-wrap: wrap;
+
 	padding-top: 50px; 
 	margin: 10px;
 	height: 600px;
@@ -217,6 +218,7 @@ header .nav_right ul li a:hover{
 	border-style: solid; 
 	border-width: 3px;
 	border-color: #EB8258;
+	border-radius: 3px;
 	flex: 50%;
 	display: inline-block;
 
@@ -240,6 +242,7 @@ header .nav_right ul li a:hover{
 	border-style: solid;
 	border-width: 3px;
 	border-color: #EB8258;
+	border-radius: 3px;
 	flex: 50%;
 	display: inline-block;
 }
@@ -248,9 +251,8 @@ header .nav_right ul li a:hover{
 	color: #13293D;
 	background-color: #FFCC6A;
 	border: none;
-	line-height: 30px;
 	height: 50px;
-	width: 150px;
+	width: 200px;
 	border-radius: 5px;
 	font-family: 'Avenir', sans-serif;
 	padding: 15px;
@@ -260,9 +262,8 @@ header .nav_right ul li a:hover{
 	color: #13293D;
 	background-color: #FFCC6A;
 	border: none;
-	line-height: 30px;
 	height: 50px;
-	width: 150px;
+	width: 200px;
 	border-radius: 5px;
 	font-family: 'Avenir', sans-serif;
 	padding: 15px;
@@ -271,6 +272,9 @@ header .nav_right ul li a:hover{
 .donations .donate_btn{
 	background-color: #EB8258;
 	border-radius: 20px;
+	font-weight: bold;
+	padding: auto;
+	text-align: center;
 }
 
 .donations .donate_btn:hover{
