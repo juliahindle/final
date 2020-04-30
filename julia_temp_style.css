@@ -1,9 +1,9 @@
 .chart
 {
 	margin: auto;
-	width: 450px;
-	height: 236px;
-	margin-bottom: 30px;
+	width: 460px;
+	height: 270px;
+	margin-bottom: 10px;
 	display: inline-block;
 }
 
@@ -18,13 +18,13 @@
 
 .box
 {
-	height: 90%;
+	height: 95%;
 	outline: 3px solid #EB8258;
 	margin: 30px;
 }
 
 #box1 { overflow-y: scroll; }
-#box2 { overflow-y: hidden; overflow-x: hidden; padding: 20px;}
+#box2 { overflow-y: hidden; overflow-x: hidden; padding: 5px;}
 
 #main
 {
@@ -46,4 +46,15 @@
 	text-align: center !important;
 	border-bottom: none !important;
 	padding-bottom: 0 !important;
+}
+
+
+.filters:hover
+{
+	cursor: pointer;
+}
+
+input, td:hover
+{
+	cursor: pointer;
 }

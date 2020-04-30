@@ -344,11 +344,6 @@ footer div{
 	color: #EB8258;
 }
 
-#table th:hover
-{
-	cursor: pointer;
-}
-
 /* ------------ donation post-form pages ------------ */
 .findMask{
 	font-family: 'Avenir', sans-serif;
