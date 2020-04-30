@@ -112,7 +112,6 @@ header .nav_right ul li a:hover{
     border-width: 10px;
     border-color: #EB8258;
  	border-radius: 5px;
- 	padding: 20px;
  	margin-top: 100px;
  	margin-bottom: 50px;
  	margin-left: 15%;
@@ -132,6 +131,7 @@ header .nav_right ul li a:hover{
     border-color: #EB8258;
  	border-radius: 5px;
  	margin-left: 0px;
+ 	margin-top: 100px;
 	}
 
 .go_btn:hover{
@@ -152,7 +152,6 @@ header .nav_right ul li a:hover{
     max-width: 70%;
     margin-left: 15%;
     margin-bottom: 50px;
-   	float: right;
 	padding-left: 10px;
 	width: 75%;
 	font-family: 'Avenir', sans-serif;
@@ -160,12 +159,14 @@ header .nav_right ul li a:hover{
 
 .container_search div tr td{
     padding: 20px;
-    margin: auto;
+    margin: 25%;
     font-family: 'Avenir', sans-serif;
     border: none;
 }
 
-
+#compare_link:hover{
+	color: #FFCC6A;
+}
 /* ------------END of first part of homepage design, individual state search feature------------ */
 
 #data{

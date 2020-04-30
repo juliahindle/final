@@ -362,7 +362,8 @@
 			}
 	</script>
 <!------------------------- first part of homepage, the individual state search----------------------------->
-	<select name="Select A State" id="search_state">
+	<div class="search_bar">
+		<select name="Select A State" id="search_state">
     				<option value="AL">Alabama</option>
     				<option value="AK">Alaska</option>
     				<option value="AR">Arkansas</option>	
@@ -414,8 +415,9 @@
     				<option value="WI">Wisconsin</option>	
     				<option value="WV">West Virginia</option>
     				<option value="WY">Wyoming</option>
-    			</select>
-    <button class="go_btn" onclick="searchData()"> Go</button>
+    	</select>
+    	<button class="go_btn" onclick="searchData()"> Go</button>
+	</div>
 
     <div class="container_search">
         	<table  class="indiv_search_table">
@@ -430,7 +432,7 @@
         	</table>
     </div>
 
-    <a href = "#headOfBox1" style="color: #EB8258; text-align: center; text-decoration: none"><h3 style="padding-bottom: 150px;">COMPARE STATES BELOW</h3></a>
+    <a href = "#headOfBox1" id="compare_link" style="color: #EB8258; text-align: center; text-decoration: none"><h3 style="padding-bottom: 150px;">COMPARE STATES BELOW</h3></a>
 
 
 <!------------------------- start of second part of homepage, the state comparison charts----------------------------->
