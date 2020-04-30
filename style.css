@@ -13,11 +13,6 @@ html{
 }
 
 
-/*
-TODO: add styling for donations page, thanks for donating page and external result page
-also, add footer style
-*/
-
 /* ------------start header/nav design------------ */
 header{
 	height: 100px;
@@ -353,7 +348,6 @@ footer div{
 
 .goBack, .result{ /* MAYBE: .goBack, .result ??? */
 	font-family: 'Avenir', sans-serif;
-	text-align: center;
 	color: #FFCC6A;
 	display: inline-block;
 }
