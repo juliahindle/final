@@ -371,7 +371,7 @@ footer div{
 	color: #13293D;
 }
 
-.goBack .result{
+.goBack .result{ /* MAYBE: .goBack, .result ??? */
 	font-family: 'Avenir', sans-serif;
 	text-align: center;
 	color: #13293D;
