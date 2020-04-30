@@ -112,7 +112,6 @@ header .nav_right ul li a:hover{
     border-width: 10px;
     border-color: #EB8258;
  	border-radius: 5px;
- 	padding: 20px;
  	margin-top: 100px;
  	margin-bottom: 50px;
  	margin-left: 15%;
@@ -132,6 +131,7 @@ header .nav_right ul li a:hover{
     border-color: #EB8258;
  	border-radius: 5px;
  	margin-left: 0px;
+ 	margin-top: 100px;
 	}
 
 .go_btn:hover{
@@ -152,36 +152,21 @@ header .nav_right ul li a:hover{
     max-width: 70%;
     margin-left: 15%;
     margin-bottom: 50px;
-}
-
-.search_left{
-	margin-left: 10px;
-	padding: 30px;
-	float: left;
-	font-size: 150%;
-	width: 25%;
-}
-
-.search_right{
-	float: right;
 	padding-left: 10px;
 	width: 75%;
 	font-family: 'Avenir', sans-serif;
 }
 
-
 .container_search div tr td{
     padding: 20px;
-    margin: auto;
+    margin: 25%;
     font-family: 'Avenir', sans-serif;
     border: none;
 }
 
-.container_search tr:hover{
-	background-color: #FFCC6A !important;
+#compare_link:hover{
+	color: #FFCC6A;
 }
-
-
 /* ------------END of first part of homepage design, individual state search feature------------ */
 
 #data{
@@ -368,13 +353,13 @@ footer div{
 .findMask{
 	font-family: 'Avenir', sans-serif;
 	text-align: center;
-	color: #13293D;
+	color: #FFCC6A;
 }
 
-.goBack .result{ /* MAYBE: .goBack, .result ??? */
+.goBack, .result{ /* MAYBE: .goBack, .result ??? */
 	font-family: 'Avenir', sans-serif;
 	text-align: center;
-	color: #13293D;
+	color: #FFCC6A;
 	display: inline-block;
 }
 
