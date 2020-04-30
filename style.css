@@ -353,13 +353,13 @@ footer div{
 .findMask{
 	font-family: 'Avenir', sans-serif;
 	text-align: center;
-	color: #13293D;
+	color: #FFCC6A;
 }
 
 .goBack .result{ /* MAYBE: .goBack, .result ??? */
 	font-family: 'Avenir', sans-serif;
 	text-align: center;
-	color: #13293D;
+	color: #FFCC6A;
 	display: inline-block;
 }
 
