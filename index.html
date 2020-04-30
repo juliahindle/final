@@ -346,7 +346,6 @@
 						for (i = 0; i < data.length; i++) 
 						{
 							if (data[i]["state"] == chosenState) {
-	                            document.getElementById("state_placeholder").innerHTML = data[i]["state"];
 								document.getElementById("total_P_placeholder").innerHTML = data[i]["positive"];
 								document.getElementById("total_D_placeholder").innerHTML = data[i]["death"];
 								document.getElementById("daily_P_placeholder").innerHTML = data[i]["positiveIncrease"];
@@ -419,10 +418,6 @@
     <button class="go_btn" onclick="searchData()"> Go</button>
 
     <div class="container_search">
-        <div class="search_left">
-    	   <h3 id="state_placeholder">  </h3>
-        </div>
-        <div class="search_right">
         	<table  class="indiv_search_table">
         		<tr>
     		    	<td><h4>Total Positive: </h4></td><td><h3 id="total_P_placeholder"></h3></td>
@@ -433,7 +428,6 @@
     		    	<td><h4>Daily Death Increase: </h4></td><td><h3 id="daily_D_placeholder"></h3></td>
     		    </tr>
         	</table>
-        </div>
     </div>
 
     <a href = "#headOfBox1" style="color: #EB8258; text-align: center; text-decoration: none"><h3 style="padding-bottom: 150px;">COMPARE STATES BELOW</h3></a>
