@@ -194,10 +194,9 @@ header .nav_right ul li a:hover{
 
 .donations{
 	display: block;
-	padding: 0px 50px;
 	background-color: #13293D;
 	margin: 50px auto;
-	width: 1200px;
+	width: 1100px;
 }
 
 .donations h3{
@@ -414,7 +413,9 @@ footer div{
 		padding-left: 10px;
 	}
 
-
+	.donations{
+		max-width: 600px;
+	}
 
 
 	footer{
