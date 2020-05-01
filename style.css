@@ -193,29 +193,30 @@ header .nav_right ul li a:hover{
 
 
 .donations{
-	display: flex;
-	margin-top: 50px; 
-	margin-bottom: 50px;
+	display: block;
+	padding: 0px 50px;
 	background-color: #13293D;
+	margin: 50px auto;
+	width: 1200px;
 }
 
 .donations h3{
 	text-align: center;
 	padding-bottom: 15px;
 	color: #FFCC6A;
+	margin: 0, auto;
 }
 
 .form1{
 	font-family: 'Avenir', sans-serif;
 	color: #EB8258;
 	padding: 20px;
-	width: 30%;
-	margin: 20px;
+	max-width: 500px;
+	margin: 25px;
 	border-style: solid; 
 	border-width: 3px;
 	border-color: #EB8258;
 	border-radius: 3px;
-	flex: 50%;
 	display: inline-block;
 	background-color: #13293D;
 
@@ -231,14 +232,13 @@ header .nav_right ul li a:hover{
 	font-family: 'Avenir', sans-serif;
 	color: #EB8258;
 	display: inline-block;
-	margin: 20px;
+	margin: 25px;
 	padding: 20px;
-	width: 30%;
+	max-width: 500px;
 	border-style: solid;
 	border-width: 3px;
 	border-color: #EB8258;
 	border-radius: 3px;
-	flex: 50%;
 	background-color: #13293D;
 }
 
@@ -414,23 +414,7 @@ footer div{
 		padding-left: 10px;
 	}
 
-	.donations{
-		flex-direction: column;
-	}
 
-	.form1{
-		min-width: 70%;
-		display: inline-block;
-	}
-
-	.form1{
-		min-width: 70%;
-		display: inline-block;
-	}	
-
-	.form2{
-		min-width: 70%;
-	}	
 
 
 	footer{
