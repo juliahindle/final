@@ -276,6 +276,7 @@ header .nav_right ul li a:hover{
 	font-weight: bold;
 	padding: auto;
 	text-align: center;
+	font-size: 13px;
 }
 
 .donations .donate_btn:hover{
@@ -419,7 +420,13 @@ footer div{
 
 	.form1{
 		min-width: 70%;
+		display: inline-block;
 	}
+
+	.form1{
+		min-width: 70%;
+		display: inline-block;
+	}	
 
 	.form2{
 		min-width: 70%;
