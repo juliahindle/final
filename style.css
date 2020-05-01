@@ -194,11 +194,9 @@ header .nav_right ul li a:hover{
 
 .donations{
 	display: flex;
-	padding-top: 50px; 
-	margin: 10px;
-	height: 600px;
+	margin-top: 50px; 
 	margin-bottom: 50px;
-	width: auto;
+	background-color: #13293D;
 }
 
 .donations h3{
@@ -210,18 +208,16 @@ header .nav_right ul li a:hover{
 .form1{
 	font-family: 'Avenir', sans-serif;
 	color: #EB8258;
-	display: inline-block;
+	padding: 20px;
+	width: 30%;
 	margin: 20px;
-	padding: 30px;
-	position: absolute;
-	width: 40%;
-	left: 50px;
 	border-style: solid; 
 	border-width: 3px;
 	border-color: #EB8258;
 	border-radius: 3px;
 	flex: 50%;
 	display: inline-block;
+	background-color: #13293D;
 
 }
 
@@ -236,16 +232,14 @@ header .nav_right ul li a:hover{
 	color: #EB8258;
 	display: inline-block;
 	margin: 20px;
-	padding: 30px;
-	position: absolute;
-	width: 40%;
-	right: 50px;
+	padding: 20px;
+	width: 30%;
 	border-style: solid;
 	border-width: 3px;
 	border-color: #EB8258;
 	border-radius: 3px;
 	flex: 50%;
-	display: inline-block;
+	background-color: #13293D;
 }
 
 .form1 input {
@@ -257,6 +251,7 @@ header .nav_right ul li a:hover{
 	border-radius: 5px;
 	font-family: 'Avenir', sans-serif;
 	padding: 15px;
+	margin: 0px 10px;
 }
 
 .form2 input {
@@ -268,6 +263,11 @@ header .nav_right ul li a:hover{
 	border-radius: 5px;
 	font-family: 'Avenir', sans-serif;
 	padding: 15px;
+	margin: 0px 10px;
+}
+
+.form2 .donate_btn{
+	margin-top: 145px;
 }
 
 .donations .donate_btn{
@@ -416,6 +416,14 @@ footer div{
 	.donations{
 		flex-direction: column;
 	}
+
+	.form1{
+		min-width: 70%;
+	}
+
+	.form2{
+		min-width: 70%;
+	}	
 
 
 	footer{
